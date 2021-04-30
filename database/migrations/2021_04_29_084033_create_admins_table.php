@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('password', 50);
             $table->string('name', 50);
-            $table->string('email', 50)->unique(); //値が重複しないように
-            $table->timestamp('email_verified_at')->nullable(); //値がnullでも可能
-            $table->date('birthday');
-            $table->string('sex', 5);
+            $table->string('mail', 50)->unique();
             $table->string('tel', 20);
             $table->string('address', 100);
-            $table->string('image', 100);
-            $table->rememberToken(); //ログイン時とログアウト時にトークンを生成
+            $table->string('image',100);
+            $table->boolean('is_super')->default(false);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -36,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('admins');
     }
 }

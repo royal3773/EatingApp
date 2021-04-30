@@ -12,16 +12,16 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     *update, fill, createの処理が実行された時、値が挿入される
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'password', 'email', 'birthday', 'sex', 'tel', 'address', 'image',
     ];
 
     /**
      * The attributes that should be hidden for arrays.
-     *
+     *秘匿性の高いものについて指定することで、json形式に含まれなくなる。
      * @var array
      */
     protected $hidden = [
@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be cast to native types.
-     *
+     *指定したカラムを指定したデータ型で、データベースから返してくれる。
      * @var array
      */
     protected $casts = [
