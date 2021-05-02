@@ -7,11 +7,12 @@
             <div class="card">
                 <!-- 下記を修正する -->
                 <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
-
+                <!-- 管理者側のログインであれば管理者側へユーザー側であればユーザー側へ変換される -->
                 <div class="card-body">
                     @isset($url)
                     <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
                         @csrf
+                        <!-- 名前蘭 -->
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -25,7 +26,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- パスワード蘭 -->
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -39,7 +40,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- パスワード確認蘭 -->
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -47,6 +48,40 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <!-- メール蘭 -->
+                        <div class="form-group row">
+                            <label for="mail" class="col-md-4 col-form-label text-md-right">{{ __('Mail') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="mail" type="mail" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="mail" value="{{ old('mail') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 電話番号 -->
+                        <div class="form-group row">
+                            <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tel" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="tel" value="{{ old('tel') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 住所蘭 -->
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 画像蘭-->
+                        <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}">
+                            </div>
+                        </div>
+                        
+                    <!-- ここから下はユーザー情報を登録する画面 -->
                     @else
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf

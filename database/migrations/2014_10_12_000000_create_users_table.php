@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('password', 50);
+            $table->string('password', 255);
             $table->string('name', 50);
             $table->string('email', 50)->unique(); //値が重複しないように
             $table->timestamp('email_verified_at')->nullable(); //値がnullでも可能
@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('sex', 5);
             $table->string('tel', 20);
             $table->string('address', 100);
-            $table->string('image', 100);
+            $table->string('image', 100)->nullable();
             $table->rememberToken(); //ログイン時とログアウト時にトークンを生成
             $table->timestamps();
         });

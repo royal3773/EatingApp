@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <!-- 下記を修正する -->
+                <!-- $urlに値があればucwords()によりAdminに変換する -->
                 <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Login') }}</div>
-
+                <!-- $urlに値が入っていれば、Adminログインを表示してそれ以外であれば、userログインを表示する -->
                 <div class="card-body">
                     @isset($url)
                     <form method="POST" action='{{ url("login/$url") }}' aria-label="{{ __('Login') }}">
