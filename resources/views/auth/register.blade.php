@@ -85,7 +85,7 @@
                     @else
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
-
+                        <!-- 名前蘭 -->
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -99,7 +99,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- メール蘭 -->
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -113,7 +113,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- パスワード蘭 -->
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -127,7 +127,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <!-- パスワード確認蘭 -->
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -135,7 +135,46 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <!-- 誕生日 -->
+                        <div class="form-group row">
+                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('birthday') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="birthday" type="date" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 性別 -->
+                        <div class="form-group row">
+                            <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="sex" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="sex" value="{{ old('sex') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 電話番号 -->
+                        <div class="form-group row">
+                            <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('Tel') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="tel" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="tel" value="{{ old('tel') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 住所 -->
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+                            </div>
+                        </div>
+                        <!-- 画像 -->
+                        <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('image') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}" required autofocus>
+                            </div>
+                        </div>
                     @endisset
                     <!-- 上記までを修正する -->        
                         <div class="form-group row mb-0">

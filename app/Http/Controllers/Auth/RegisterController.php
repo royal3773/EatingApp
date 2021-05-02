@@ -68,7 +68,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {//createメソッドを使用して、fillableで指定した値に一括代入する
-        dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
