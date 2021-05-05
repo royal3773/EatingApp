@@ -26,4 +26,4 @@ Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 //homeへアクセスするルート情報。ログインしていないとlogin画面へリダイレクトされる。
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/admin', 'admin')->middleware('auth');
+Route::view('/admin', 'admin');
