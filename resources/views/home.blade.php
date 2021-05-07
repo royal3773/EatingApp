@@ -10,8 +10,12 @@
                 <div class="card-body">
                      Hi there, regular user
                 </div>
+                <div>
+                <a href = "chat">chatselect</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

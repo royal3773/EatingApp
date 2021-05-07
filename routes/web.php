@@ -26,4 +26,9 @@ Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 //homeへアクセスするルート情報。ログインしていないとlogin画面へリダイレクトされる。
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/admin', 'admin');
+Route::view('/admin', 'admin')->middleware('auth:admin');
+
+Route::get('chat', 'HomeController@chatindex');
+
+Route::get('/chat/{recieve}' , 'MessageController@index')->name('chat');
+Route::post('/chat/send' , 'MessageController@store')->name('chatSend');
