@@ -9,13 +9,13 @@
 
                 <div class="card-body">
                      Hi there, regular user
-                </div>
-                <div>
-                <a href = "chat">chatselect</a>
-                </div>
             </div>
         </div>
     </div>
+                </div>
+                <div>
+                <a class="btn btn-primary" href = "chat">チャット画面一覧</a>
+                </div>
 </div>
 @endsection
 

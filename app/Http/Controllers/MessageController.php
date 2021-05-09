@@ -59,23 +59,15 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $messages = new Message;
-        // リクエストパラメータ取得
+        // リクエストパラメータを保存
             $messages->send = $request->input('send');
             $messages->recieve = $request->input('recieve');
             $messages->message = $request->input('message');
         $messages->save();
         // Message::insert($insertParam);
-        
-        // メッセージデータ保存
-        // try{
-        // }catch (\Exception $e){
-        //     return false;
-            
-        // }
- 
         // イベント発火
         event(new ChatMessageRecieved($request->all()));
- 
+
         // // メール送信
         // $mailSendUser = User::where('id' , $request->input('recieve'))->first();
         // $to = $mailSendUser->email;
