@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Message;
 use Illuminate\Http\Request;
 use App\Mail\SampleNotification;
 use App\Events\ChatMessageRecieved;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+
 
 class MessageController extends Controller
 {
@@ -56,33 +58,29 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $messages = new Message;
         // リクエストパラメータ取得
-        $insertParam = [
-            'send' => $request->input('send'),
-            'recieve' => $request->input('recieve'),
-            'message' => $request->input('message'),
-        ];
- 
- 
+            $messages->send = $request->input('send');
+            $messages->recieve = $request->input('recieve');
+            $messages->message = $request->input('message');
+        $messages->save();
+        // Message::insert($insertParam);
+        
         // メッセージデータ保存
-        try{
-            Message::insert($insertParam);
-        }catch (\Exception $e){
-            return false;
- 
-        }
- 
+        // try{
+        // }catch (\Exception $e){
+        //     return false;
+            
+        // }
  
         // イベント発火
         event(new ChatMessageRecieved($request->all()));
  
-        // メール送信
-        $mailSendUser = User::where('id' , $request->input('recieve'))->first();
-        $to = $mailSendUser->email;
-        Mail::to($to)->send(new SampleNotification());
- 
-        return true;
+        // // メール送信
+        // $mailSendUser = User::where('id' , $request->input('recieve'))->first();
+        // $to = $mailSendUser->email;
+        // Mail::to($to)->send(new SampleNotification());
+        return redirect('/chat'.'/'.$request->recieve);
  
     }
 
