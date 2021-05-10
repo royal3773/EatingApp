@@ -46,10 +46,16 @@
        //ログを有効にする
        Pusher.logToConsole = true;
  
-       var pusher = new Pusher('[YOUR-APP-KEY]', {
-           cluster  : '[YOUR-CLUSTER]',
+       var pusher = new Pusher('64fd8c552ef95fa6e67e', {
+           cluster  : 'ap3',
            encrypted: true
        });
+console.log('アイウエオ');
+       var channel = pusher.subscribe('chat');
+      channel.bind('ChatMessageRecieved', function(data) {
+       console.log('received a message');
+       console.log(data);
+      });
  
        //購読するチャンネルを指定
        var pusherChannel = pusher.subscribe('chat');
@@ -59,7 +65,7 @@
  
            let appendText;
            let login = $('input[name="login"]').val();
- 
+
            if(data.send === login){
                appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
            }else if(data.recieve === login){

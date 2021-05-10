@@ -1,7 +1,8 @@
 <?php
  
 namespace App\Events;
- 
+
+use App\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -48,6 +49,7 @@ class ChatMessageRecieved implements ShouldBroadcast
     public function broadcastWith()
     {
  
+        
         return [
             'message' => $this->request['message'],
             'send' => $this->request['send'],
@@ -62,7 +64,6 @@ class ChatMessageRecieved implements ShouldBroadcast
      */
     public function broadcastAs()
     {
- 
         return 'chat_event';
     }
 }
