@@ -16620,6 +16620,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+// import Vue from 'vue';
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -16695,6 +16697,10 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   key: "64fd8c552ef95fa6e67e",
   cluster: "ap3",
   encrypted: true
+});
+window.Echo.channel('chat').listen('ChatMessageRecieved', function (data) {
+  console.log('received a message');
+  console.log(data);
 });
 
 /***/ }),

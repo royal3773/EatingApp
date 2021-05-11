@@ -32,3 +32,5 @@ Route::get('chat', 'HomeController@chatindex');
 
 Route::get('/chat/{recieve}' , 'MessageController@index')->name('chat');
 Route::post('/chat/send' , 'MessageController@store')->name('chatSend');
+
+Route::get('/userlogin', 'UserTopController@index');
