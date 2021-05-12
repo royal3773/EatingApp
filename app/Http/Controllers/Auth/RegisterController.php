@@ -90,7 +90,7 @@ class RegisterController extends Controller
 
     public function showAdminRegisterForm()
     {
-        return view('auth.register', ['url' => 'admin']);
+        return view('auth.adminregister');
     }
 
     protected function createAdmin(Request $request)
