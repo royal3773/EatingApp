@@ -16,7 +16,10 @@
   -webkit-transform: translate(-50%,-60%);
   transform: translate(-50%,-100%);
 }
-
+.img-fluid {
+  max-width: none;
+  width: 100%;
+}
 /* -----------------------------button----------------------------------- */
 
 .btn {

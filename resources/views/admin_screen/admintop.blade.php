@@ -5,18 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">トップ画面</div>
 
                 <div class="card-body">
-                     Hi there, regular user
+                    こちらはお店のトップページです。
+                </div>
             </div>
+            <div>
+                <a class="btn btn-primary" href = "chat">チャット画面一覧</a>
+            </div>
+
+            <div>
+                <a class="btn btn-primary" href = "adminchatselect">testチャット画面一覧</a>
+                </div>
         </div>
     </div>
-                </div>
-                <div>
-                <a class="btn btn-primary" href = "chat">チャット画面一覧</a>
-                </div>
-                
 </div>
 @endsection
-

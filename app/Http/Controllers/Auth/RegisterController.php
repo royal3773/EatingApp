@@ -47,17 +47,14 @@ class RegisterController extends Controller
 
     /**
      * Get a validator for an incoming registration request.
-     *
+     *Userモデルで設定したバリデーションとメッセージを引数として渡している。
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+        return Validator::make($data, User::$rules, User::$message);
     }
 
     /**
@@ -79,18 +76,16 @@ class RegisterController extends Controller
             'image' => $data['image'],
         ]);
     }
-    protected function validatorAdmin(array $data)
-    {
-        //バリデータを作成している
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'password' => 'required|string|min:6|confirmed',//psswordが入力されたのと同じかどうか
-        ]);
-    }
 
     public function showAdminRegisterForm()
     {
         return view('auth.adminregister');
+    }
+
+    protected function validatorAdmin(array $data)
+    {
+        //バリデータを作成している
+        return Validator::make($data, Admin::$rules, Admin::$message);
     }
 
     protected function createAdmin(Request $request)

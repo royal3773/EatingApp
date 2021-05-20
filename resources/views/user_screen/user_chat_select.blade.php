@@ -13,26 +13,7 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Name</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($users as $key => $user)
-        <tr>
-            <th>{{$loop->iteration}}</th>
-            <td>{{$user->name}}</td>
-            <td><a href="/chat/{{$user->id}}"><button type="button" class="btn btn-primary">Chat</button></a></td>
-        </tr>
-        @endforeach
-        </tbody>
-    </table>
-    {{--  チャット可能お店覧  --}}
-    <table class="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>AdminName</th>
+            <th>AdimnName</th>
             <th></th>
         </tr>
         </thead>

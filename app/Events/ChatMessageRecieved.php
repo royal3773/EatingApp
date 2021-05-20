@@ -26,30 +26,29 @@ class ChatMessageRecieved implements ShouldBroadcast
     public function __construct($request)
     {
         $this->request = $request;
- 
     }
  
     /**
      * イベントをブロードキャストすべき、チャンネルの取得
-     *
+     *　クライアントから接続するためのチャンネル名を設定
      * @return Channel|Channel[]
      */
     public function broadcastOn()
     {
- 
+        dump('chat1');
         return new Channel('chat');
  
     }
  
     /**
      * ブロードキャストするデータを取得
-     *
+     *　クライアントに送るデータを定義
      * @return array
      */
     public function broadcastWith()
     {
  
-        
+        dump('chat2');
         return [
             'message' => $this->request['message'],
             'send' => $this->request['send'],
@@ -59,11 +58,12 @@ class ChatMessageRecieved implements ShouldBroadcast
  
     /**
      * イベントブロードキャスト名
-     *
+     *として放送
      * @return string
      */
     public function broadcastAs()
     {
+        dump('chat3');
         return 'chat_event';
     }
 }

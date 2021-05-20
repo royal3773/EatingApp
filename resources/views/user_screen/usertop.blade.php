@@ -8,7 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                     Hi there, regular user
+                     こちらはユーザートップです。
             </div>
         </div>
     </div>
@@ -16,7 +16,10 @@
                 <div>
                 <a class="btn btn-primary" href = "chat">チャット画面一覧</a>
                 </div>
-                
+
+                <div>
+                <a class="btn btn-primary" href = "userchatselect">testチャット画面一覧</a>
+                </div>
 </div>
 @endsection
 

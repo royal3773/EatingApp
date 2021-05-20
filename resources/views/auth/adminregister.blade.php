@@ -13,42 +13,36 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">新規登録</div>
-                <!-- 管理者側のログインであれば管理者側へユーザー側であればユーザー側へ変換される -->
                 <div class="card-body">
                     <form method="POST" action="/register/admin" aria-label="{{ __('Register') }}">
                         @csrf
                         <!-- 名前蘭 -->
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
-
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"  autofocus required>
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
                         <!-- パスワード蘭 -->
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">パスワード</label>
-
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
                         <!-- パスワード確認蘭 -->
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">確認用パスワード</label>
-
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
@@ -56,9 +50,13 @@
                         <!-- メール蘭 -->
                         <div class="form-group row">
                             <label for="mail" class="col-md-4 col-form-label text-md-right">メール</label>
-
                             <div class="col-md-6">
-                                <input id="mail" type="mail" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="mail" value="{{ old('mail') }}" required autofocus>
+                                <input id="mail" type="mail" class="form-control{{ $errors->has('mail') ? ' is-invalid' : '' }}" name="mail" value="{{ old('mail') }}" autofocus>
+                                @error('mail')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- 電話番号 -->
@@ -82,7 +80,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">画像</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}">
+                                <input id="image" type="file" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}">
                             </div>
                         </div>
                         

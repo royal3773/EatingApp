@@ -26,17 +26,16 @@ class MessageController extends Controller
           'send' => $loginId,
           'recieve' => $recieve,
         ];
-    
-        // 送信 / 受信のメッセージを取得する
-        $query = Message::where('send' , $loginId)->where('recieve' , $recieve);;
-        $query->orWhere(function($query) use($loginId , $recieve){
+        // 送信のメッセージを取得する
+        $send_message = Message::where('send' , $loginId)->where('recieve' , $recieve);
+        // 受信のメッセージを取得する
+        $send_message->orWhere(function($query) use($loginId , $recieve){
             $query->where('send' , $recieve);
             $query->where('recieve' , $loginId);
-    
         });
     
-        $messages = $query->get();
-    
+        $messages = $send_message->get();
+
         return view('chat' , compact('param' , 'messages'));
     }
 
@@ -65,7 +64,7 @@ class MessageController extends Controller
             $messages->message = $request->input('message');
         $messages->save();
         // Message::insert($insertParam);
-        // イベント発火
+        // イベント発火chatmessagerecieved.phpに書いてある処理を呼び出す
         event(new ChatMessageRecieved($request->all()));
 
         // // メール送信
