@@ -74,12 +74,21 @@ class MessageController extends Controller
             $messages->message = $request->input('message');
         $messages->save();
         // Message::insert($insertParam);
-        
+        if(Auth::guard()->check())
+        {
+            $send_user = User::find($request->input('send'));
+            $request['send_user'] = $send_user->name;
+        }
+        elseif(Auth::guard('admin')->check())
+        {
+            $send_admin = Admin::find($request->input('send'));
+            $request['send_admin'] = $send_admin->name;
+        }
+        dump($request->all());
         // イベント発火chatmessagerecieved.phpに書いてある処理を呼び出す
         event(new ChatMessageRecieved($request->all()));
 
         return redirect('/chat'.'/'.$request->recieve);
- 
     }
 
     /**
