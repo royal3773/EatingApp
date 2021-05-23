@@ -26,11 +26,11 @@ Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 //homeへアクセスするルート情報。ログインしていないとlogin画面へリダイレクトされる。
 Route::view('/admintop', 'admin_screen.admintop')->middleware('auth:admin');
-
-Route::get('chat', 'HomeController@chatindex');
+//チャットセレクト
 Route::get('userchatselect', 'Chat\HomeChatController@userchatselectindex')->middleware('auth');
 Route::get('adminchatselect', 'Chat\HomeChatController@adminchatselectindex')->middleware('auth:admin');
-
+Route::get('chat', 'HomeController@chatindex');
+//チャット画面
 Route::get('/chat/{recieve}' , 'MessageController@index')->name('chat');
 Route::post('/chat/send' , 'MessageController@store')->name('chatSend');
 

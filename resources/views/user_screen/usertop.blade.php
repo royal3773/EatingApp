@@ -20,6 +20,8 @@
                 <div>
                 <a class="btn btn-primary" href = "userchatselect">testチャット画面一覧</a>
                 </div>
+
+                
 </div>
 @endsection
 

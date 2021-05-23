@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chat;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin;
@@ -16,8 +17,7 @@ class HomeChatController extends Controller
     //ユーザーがお店側を選ぶ
     public function userchatselectindex()
     {
-        // $user = Auth::user();//現在ログインしているユーザーの情報を取得
-        // $users = User::where('id', '<>', $user->id)->get();//現在ログインしているユーザー以外のIDを取得
+        $user = Auth::user();//現在ログインしているユーザーの情報を取得
         $admins = Admin::all();
         return view('user_screen.user_chat_select', ['admins' => $admins]);
     }

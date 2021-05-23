@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Admin;
 use App\Message;
-use Illuminate\Http\Request;
 use App\Mail\SampleNotification;
 use App\Events\ChatMessageRecieved;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-
 
 class MessageController extends Controller
 {
@@ -20,8 +20,19 @@ class MessageController extends Controller
      */
     public function index(Request $request , $recieve)
     {
-        // チャットの画面
-        $loginId = Auth::id();
+        if(Auth::guard('admin')->check())
+        {
+            $loginId = Auth::guard('admin')->id();
+        }
+        elseif(Auth::guard()->check())
+        {
+            $loginId = Auth::id();
+        }
+        else
+        {
+            return redirect('/');
+        }
+
         $param = [
           'send' => $loginId,
           'recieve' => $recieve,
@@ -33,10 +44,9 @@ class MessageController extends Controller
             $query->where('send' , $recieve);
             $query->where('recieve' , $loginId);
         });
-    
         $messages = $send_message->get();
 
-        return view('chat' , compact('param' , 'messages'));
+        return view('chat' , ['param' => $param , 'messages' => $messages]);
     }
 
     /**
@@ -64,13 +74,10 @@ class MessageController extends Controller
             $messages->message = $request->input('message');
         $messages->save();
         // Message::insert($insertParam);
+        
         // イベント発火chatmessagerecieved.phpに書いてある処理を呼び出す
         event(new ChatMessageRecieved($request->all()));
 
-        // // メール送信
-        // $mailSendUser = User::where('id' , $request->input('recieve'))->first();
-        // $to = $mailSendUser->email;
-        // Mail::to($to)->send(new SampleNotification());
         return redirect('/chat'.'/'.$request->recieve);
  
     }

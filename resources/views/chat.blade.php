@@ -15,7 +15,10 @@
                 <div class="send" style="text-align: right">
                     <p>{{$message->message}}</p>
                 </div>
- 
+            @elseif($message->send == \Illuminate\Support\Facades\Auth::guard('admin')->id())
+                <div class="send" style="text-align: right">
+                    <p>{{$message->message}}</p>
+                </div>
             @endif
  
             {{--   受信したメッセージ  --}}
@@ -23,21 +26,30 @@
                 <div class="recieve" style="text-align: left">
                     <p>{{$message->message}}</p>
                 </div>
+            @elseif($message->recieve == \Illuminate\Support\Facades\Auth::guard('admin')->id())
+                <div class="send" style="text-align: left">
+                    <p>{{$message->message}}</p>
+                </div>
             @endif
         @endforeach
     </div>
- 
+
     <form name="form" >
     
         <textarea name="message" style="width:100%"></textarea>
         <button type="button"　 id="btn_send">送信</button>
         
     </form>
-
+    @auth
     <input type="hidden" name="send" value="{{$param['send']}}">
     <input type="hidden" name="recieve" value="{{$param['recieve']}}">
     <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
- 
+    @endauth
+    @auth('admin')
+    <input type="hidden" name="send" value="{{$param['send']}}">
+    <input type="hidden" name="recieve" value="{{$param['recieve']}}">
+    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
+    @endauth
 </div>
 
 @endsection
@@ -47,13 +59,12 @@
 
        //ログを有効にする
        Pusher.logToConsole = true;
- 
+       //pusherを指定
        var pusher = new Pusher('64fd8c552ef95fa6e67e', {
            cluster  : 'ap3',
            encrypted: true
        });
        //サブスクライブするチャンネルを指定後、ChatMessageRecievedをバインドしている
-       //chat3が表示されなくなる
        var channel = pusher.subscribe('chat');
        channel.bind('ChatMessageRecieved', function(data) {
        console.log('received a message');
@@ -81,11 +92,7 @@
  
            // メッセージを表示
            $("#room").append(appendText);
-        //    if(data.send === login){
-        //        console.log('chat機能');
-        //        Push.create('新着メッセージ');
-        //        console.log('push機能送信');
-        //    }
+           
            if(data.recieve === login){
                // ブラウザへプッシュ通知
                Push.create("新着メッセージ",
@@ -97,14 +104,11 @@
                            this.close();//通知を閉じる
                        }
                    })
-
- 
            }
- 
  
        });
     window.addEventListener('DOMContentLoaded', function () {
-
+        //ポスト送信するときは下記を追記する
         $.ajaxSetup({
             headers : {
                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
