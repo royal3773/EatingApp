@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Admin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -39,21 +41,20 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
+        $this->middleware('guest:admin');
     }
 
     /**
      * Get a validator for an incoming registration request.
-     *
+     *Userモデルで設定したバリデーションとメッセージを引数として渡している。
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+        return Validator::make($data, User::$rules, User::$message);
     }
 
     /**
@@ -63,11 +64,41 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {//createメソッドを使用して、fillableで指定した値に一括代入する
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'birthday' => $data['birthday'],
+            'sex' => $data['sex'],
+            'tel' => $data['tel'],
+            'address' => $data['address'],
+            'image' => $data['image'],
         ]);
+    }
+
+    public function showAdminRegisterForm()
+    {
+        return view('auth.adminregister');
+    }
+
+    protected function validatorAdmin(array $data)
+    {
+        //バリデータを作成している
+        return Validator::make($data, Admin::$rules, Admin::$message);
+    }
+
+    protected function createAdmin(Request $request)
+    {
+        $this->validatorAdmin($request->all())->validate();
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'password' => Hash::make($request['password']),
+            'mail' => $request['mail'],
+            'tel' => $request['tel'],
+            'address' => $request['address'],
+            'image' => $request['image'],
+        ]);
+        return redirect()->intended('login/admin');
     }
 }

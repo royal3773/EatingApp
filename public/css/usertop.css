@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* -----------------------------image----------------------------------- */
+
+.box {
+  position: relative;
+}
+.box p {
+  position: absolute;
+  font-family: bold;
+  font-size: 2em;
+  color: azure;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-60%);
+  -webkit-transform: translate(-50%,-60%);
+  transform: translate(-50%,-100%);
+}
+.img-fluid {
+  max-width: none;
+  width: 100%;
+}
+/* -----------------------------button----------------------------------- */
+
+.btn {
+  margin: 10px 0px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #6A040F;
+  border-color: #6A040F;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #6a040e94;
+  border-color: #6a040e94;
+}
+.btn-outline-primary {
+  color: #6A040F;
+  border-color: #6A040F;
+}
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #6a040e94;
+  border-color: #6a040e94;
+}

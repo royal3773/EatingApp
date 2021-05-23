@@ -17,11 +17,16 @@ class RedirectIfAuthenticated
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
-    {
+    {//モデルで定義した$guard=adminが入っていること、ユーザーがログインしていることを確認できたら
+        if ($guard == "admin" && Auth::guard($guard)->check()) {
+            return redirect('/admintop');
+        }
+
         if (Auth::guard($guard)->check()) {
             return redirect(RouteServiceProvider::HOME);
         }
 
         return $next($request);
     }
+    
 }
