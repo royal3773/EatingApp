@@ -13,22 +13,22 @@
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
                 <div class="send" style="text-align: right">
-                    <p>{{$message->message}}</p>
+                    <p>{{$message->message}} {{ $message['created_at']->format('Y/m/d H:i') }} {{ $send_name }}</p>
                 </div>
             @elseif($message->send == \Illuminate\Support\Facades\Auth::guard('admin')->id())
                 <div class="send" style="text-align: right">
-                    <p>{{$message->message}}</p>
+                    <p>{{$message->message}} {{ $message['created_at']->format('Y/m/d H:i') }} {{ $send_name }}</p>
                 </div>
             @endif
  
             {{--   受信したメッセージ  --}}
             @if($message->recieve == \Illuminate\Support\Facades\Auth::id())
                 <div class="recieve" style="text-align: left">
-                    <p>{{$message->message}}</p>
+                    <p>{{ $recieve_name }} {{ $message['created_at']->format('Y/m/d H:i') }} {{$message->message}} </p>
                 </div>
             @elseif($message->recieve == \Illuminate\Support\Facades\Auth::guard('admin')->id())
                 <div class="send" style="text-align: left">
-                    <p>{{$message->message}}</p>
+                    <p>{{ $recieve_name }} {{ $message['created_at']->format('Y/m/d H:i') }} {{$message->message}} </p>
                 </div>
             @endif
         @endforeach
@@ -50,6 +50,9 @@
     <input type="hidden" name="recieve" value="{{$param['recieve']}}">
     <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
     @endauth
+    <input type="hidden" name="user_login" value="{{\Illuminate\Support\Facades\Auth::guard()->check()}}">
+    <input type="hidden" name="admin_login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->check()}}">
+    
 </div>
 
 @endsection
@@ -80,15 +83,31 @@
            let appendText;
            //input内のnameがloginの値を取得
            let login = $('input[name="login"]').val();
+           
+           let user_login = $('input[name="user_login"]').val();
+           let admin_login = $('input[name="admin_login"]').val();
            //もし、sendとloginの値が同じであれば右に表示する
-           if(data.send === login){
-               appendText = '<div class="send" style="text-align:right"><p>' + data.message + '</p></div> ';
-            //もし、recieveとloginの値が同じであれば左に表示する
-           }else if(data.recieve === login){
-               appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + '</p></div> ';
-           }else{
-               return false;
+           if(1 == user_login){
+                if(data.send === login){
+                    appendText = '<div class="send" style="text-align:right"><p>' + data.message + data.send_user + data.created_at + '</p></div> ';
+                 //もし、recieveとloginの値が同じであれば左に表示する
+                }else if(data.recieve === login){
+                    appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + data.send_admin + data.created_at + '</p></div> ';
+                }else{
+                    return false;
+                }
            }
+           if(1 == admin_login){
+                if(data.send === login){
+                    appendText = '<div class="send" style="text-align:right"><p>' + data.message + data.send_admin + data.created_at + '</p></div> ';
+                 //もし、recieveとloginの値が同じであれば左に表示する
+                }else if(data.recieve === login){
+                    appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + data.send_user + data.created_at + '</p></div> ';
+                }else{
+                    return false;
+                }
+           }
+           
  
            // メッセージを表示
            $("#room").append(appendText);
