@@ -1,5 +1,13 @@
 @extends('layouts.app')
- 
+
+@section('navtitle')
+    <a class="navbar-brand" href="javascript:history.back()">{{ $recieve_name }}</a>
+@endsection
+
+@section('style')
+    <link href="{{ asset('css/chat.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -8,51 +16,51 @@
     </div>
  
     {{--  チャットルーム  --}}
-    <div id="room">
+    <div id="room" class="mb-5">
         @foreach($messages as $key => $message)
             {{--   送信したメッセージ  --}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
                 <div class="send" style="text-align: right">
-                    <p>{{$message->message}} {{ $message['created_at']->format('Y/m/d H:i') }} {{ $send_name }}</p>
+                    <p>{{$message->message}} {{ $message['created_at']->format('m/d H:i') }} {{ $send_name }}</p>
                 </div>
             @elseif($message->send == \Illuminate\Support\Facades\Auth::guard('admin')->id())
                 <div class="send" style="text-align: right">
-                    <p>{{$message->message}} {{ $message['created_at']->format('Y/m/d H:i') }} {{ $send_name }}</p>
+                    <p>{{$message->message}} {{ $message['created_at']->format('m/d H:i') }} {{ $send_name }}</p>
                 </div>
             @endif
  
             {{--   受信したメッセージ  --}}
             @if($message->recieve == \Illuminate\Support\Facades\Auth::id())
                 <div class="recieve" style="text-align: left">
-                    <p>{{ $recieve_name }} {{ $message['created_at']->format('Y/m/d H:i') }} {{$message->message}} </p>
+                    <p>{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }} {{$message->message}} </p>
                 </div>
             @elseif($message->recieve == \Illuminate\Support\Facades\Auth::guard('admin')->id())
                 <div class="send" style="text-align: left">
-                    <p>{{ $recieve_name }} {{ $message['created_at']->format('Y/m/d H:i') }} {{$message->message}} </p>
+                    <p>{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }} {{$message->message}} </p>
                 </div>
             @endif
         @endforeach
     </div>
-
-    <form name="form" >
-    
-        <textarea name="message" style="width:100%"></textarea>
-        <button type="button"　 id="btn_send">送信</button>
+    <div class="fixed-bottom">
+        <form name="form" class="form-inline row">
         
-    </form>
+            <textarea name="message" class="col-9 m-1 rounded-pill"></textarea>
+            <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send">送信</button>
+        </form>
+    </div>
+            
     @auth
-    <input type="hidden" name="send" value="{{$param['send']}}">
-    <input type="hidden" name="recieve" value="{{$param['recieve']}}">
-    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
+        <input type="hidden" name="send" value="{{$param['send']}}">
+        <input type="hidden" name="recieve" value="{{$param['recieve']}}">
+        <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
     @endauth
     @auth('admin')
-    <input type="hidden" name="send" value="{{$param['send']}}">
-    <input type="hidden" name="recieve" value="{{$param['recieve']}}">
-    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
+        <input type="hidden" name="send" value="{{$param['send']}}">
+        <input type="hidden" name="recieve" value="{{$param['recieve']}}">
+        <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
     @endauth
     <input type="hidden" name="user_login" value="{{\Illuminate\Support\Facades\Auth::guard()->check()}}">
     <input type="hidden" name="admin_login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->check()}}">
-    
 </div>
 
 @endsection

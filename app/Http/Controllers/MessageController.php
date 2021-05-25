@@ -80,7 +80,7 @@ class MessageController extends Controller
         $messages->save();
         // Message::insert($insertParam);
         //日付と時間を保存
-        $request['created_at'] = date('Y-m-d H:i:s');
+        $request['created_at'] = date('m/d H:i');
         //送信者の名前を保存
         if(Auth::guard()->check())
         {
