@@ -33,7 +33,7 @@ class Admin extends Authenticatable
         'name.max' => '名前は50文字以内で入力して下さい',
         'password.required' => 'パスワードは必須項目です',
         'password.min' => 'パスワードは８文字以上必要です',
-        'password.confirmed' => '確認用パスワードの値が一致しません',
+        'password.confirmed' => '確認用パスワードが一致しません',
         'mail.required' => 'メールアドレスは必須項目です',
         'mail.email' => 'こちらのアドレスは不正です',
         'mail.max' => 'メールアドレスは50文字以内で入力して下さい',

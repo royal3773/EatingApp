@@ -1,16 +1,6 @@
 @charset "UTF-8";
 /* -----------------------------image----------------------------------- */
-
-.box {
-  position: relative;
-}
-.box .card {
-  width: 70%;
-  position: absolute;
-  font-family: bold;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-150%);
+.jumbotron {
+  background-image: url(../image/food.jpg);
+  background-size: cover;
 }

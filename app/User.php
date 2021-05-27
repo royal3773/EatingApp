@@ -57,7 +57,7 @@ class User extends Authenticatable
         'email.unique' => 'こちらのメールアドレスはすでに登録されています。',
         'password.required' => 'パスワードは必須項目です',
         'password.min' => 'パスワードは８文字以上必要です',
-        'password.confirmed' => '確認用パスワードと値が一致しません',
+        'password.confirmed' => '確認用パスワードが一致しません',
         'birthday.required' => '誕生日は必須項目です',
         'birthday.before' => '値が無効です',
         'sex.required' => '性別は必須項目です',

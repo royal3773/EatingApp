@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-<div class="box">
-    <img class="img-fluid" alt="food" src="{{ asset('image/food.jpg') }}">
+<div class="jumbotron my-5">
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center my-3">
         <div class="col-md-8">
           <div class="card">
             <div class="card-header">ログイン</div>
@@ -72,6 +71,6 @@
         </div>
       </div>
     </div>
-  </div>
     @endsection
+  </div>
 
