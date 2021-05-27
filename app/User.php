@@ -46,7 +46,6 @@ class User extends Authenticatable
         'tel' => ['required', 'numeric', 'digits_between:8,20'],
         'address' => ['required', 'string', 'max:100'],
         'image' => ['image', 'max:100'],
-        
     ];
     public static $message = [
         'name.required' => '名前は必須項目です',
