@@ -7,7 +7,7 @@
 @section('content')
 <div class="jumbotron my-5">
     <div class="container">
-      <div class="row justify-content-center my-3">
+      <div class="row justify-content-center my-4">
         <div class="col-md-8">
           <div class="card">
             <div class="card-header">ログイン</div>
@@ -20,7 +20,7 @@
                   
                   <div class="col-md-6">
                     <input id="name" type="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-                    
+
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $errors->first('name') }}</strong>
@@ -42,6 +42,11 @@
                     @endif
                   </div>
                 </div>
+                  @error('auth')
+                  <span class="text-danger" role="alert">
+                    <p class="text-center">{{ $message }}</p>
+                  </span>
+                  @enderror
                 <div class="form-group row">
                   <div class="col-md-6 offset-md-4">
                     <div class="form-check">
