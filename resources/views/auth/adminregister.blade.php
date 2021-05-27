@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin_app')
 
 @section('style')
 <link href="{{ asset('css/adminregister.css') }}" rel="stylesheet">
@@ -6,8 +6,8 @@
 
 
 @section('content')
-<div class="box">
-    <img class="img-fluid" alt="food" src="{{ asset('image/food.jpg') }}">
+<div class="jumbotron">
+    <!-- <img class="img-fluid" alt="food" src="{{ asset('image/food.jpg') }}"> -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -51,7 +51,7 @@
                         <div class="form-group row">
                             <label for="mail" class="col-md-4 col-form-label text-md-right">メール</label>
                             <div class="col-md-6">
-                                <input id="mail" type="mail" class="form-control{{ $errors->has('mail') ? ' is-invalid' : '' }}" name="mail" value="{{ old('mail') }}" autofocus>
+                                <input id="mail" type="text" class="form-control{{ $errors->has('mail') ? ' is-invalid' : '' }}" name="mail" value="{{ old('mail') }}" autofocus required>
                                 @error('mail')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,7 +64,12 @@
                             <label for="tel" class="col-md-4 col-form-label text-md-right">電話番号</label>
 
                             <div class="col-md-6">
-                                <input id="tel" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="tel" value="{{ old('tel') }}" required autofocus>
+                                <input id="tel" type="text" class="form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}" name="tel" value="{{ old('tel') }}" autofocus required>
+                                @error('tel')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- 住所蘭 -->
@@ -72,7 +77,12 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">住所</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" autofocus required>
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <!-- 画像蘭-->
@@ -80,7 +90,13 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">画像</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}">
+                                <input id="image" type="file" class="form-control-file
+                                {{ $errors->has('image') ? ' is-invalid' : '' }}" name="image" value="{{ old('image') }}">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         

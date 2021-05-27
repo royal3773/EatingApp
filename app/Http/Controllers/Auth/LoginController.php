@@ -59,7 +59,7 @@ class LoginController extends Controller
             //認証機能に引かかる前にアクセル使用としたページへ飛ばす
             return redirect()->intended('/admintop');
         }
-        //ログインが失敗すると前のページに戻すその時入力したデータ情報もの一緒に返している、。
-        return back()->withInput($request->only('name', 'remember'));
+        //ログインが失敗すると前のページに戻すその時入力したデータ情報も一緒に返している、。
+        return back()->withInput($request->only('name', 'remember'))->withErrors(['auth' => ['お名前またはパスワードが正しくありません。']]);
     }
 }

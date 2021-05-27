@@ -46,7 +46,6 @@ class User extends Authenticatable
         'tel' => ['required', 'numeric', 'digits_between:8,20'],
         'address' => ['required', 'string', 'max:100'],
         'image' => ['image', 'max:100'],
-        
     ];
     public static $message = [
         'name.required' => '名前は必須項目です',
@@ -58,7 +57,7 @@ class User extends Authenticatable
         'email.unique' => 'こちらのメールアドレスはすでに登録されています。',
         'password.required' => 'パスワードは必須項目です',
         'password.min' => 'パスワードは８文字以上必要です',
-        'password.confirmed' => '確認用パスワードと値が一致しません',
+        'password.confirmed' => '確認用パスワードが一致しません',
         'birthday.required' => '誕生日は必須項目です',
         'birthday.before' => '値が無効です',
         'sex.required' => '性別は必須項目です',
