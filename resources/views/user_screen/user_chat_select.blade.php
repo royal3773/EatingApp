@@ -1,5 +1,9 @@
 @extends('layouts.app')
  
+@section('style')
+    <link href="{{ asset('css/user_chat_select.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,25 +13,15 @@
     </div>
  
     {{--  チャット可能ユーザ一覧  --}}
-    <table class="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>AdimnName</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($admins as $key => $admin)
-        <tr>
-            <th>{{$loop->iteration}}</th>
-            <td>{{$admin->name}}</td>
-            <td><a href="/chat/{{$admin->id}}"><button type="button" class="btn btn-primary">Chat</button></a></td>
-        </tr>
-        @endforeach
-        </tbody>
-    </table>
- 
+        <div class="card">
+            <div class="card-header">お店の名前</div>
+            @foreach($admins as $key => $admin)
+                <div class="card-body border border-dark">
+                    <a href="/chat/{{$admin->id}}" class="stretched-link　invisible"><p class="h3">{{$admin->name}}</p></a>
+                </div>
+            @endforeach
+            </div>
+        </div>
 </div>
  
 @endsection

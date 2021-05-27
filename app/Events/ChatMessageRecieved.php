@@ -35,9 +35,7 @@ class ChatMessageRecieved implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        dump('chat1');
         return new Channel('chat');
- 
     }
  
     /**
@@ -47,13 +45,31 @@ class ChatMessageRecieved implements ShouldBroadcast
      */
     public function broadcastWith()
     {
- 
-        dump('chat2');
-        return [
-            'message' => $this->request['message'],
-            'send' => $this->request['send'],
-            'recieve' => $this->request['recieve'],
-        ];
+        // dump('イベント処理');
+        // dump($this->request['message']);
+        // dump($this->request['send_user']);
+        // dump($this->request);
+        if(isset($this->request['send_user']))
+        {
+            // dump($this->request);
+            return [
+                'message' => $this->request['message'],
+                'send' => $this->request['send'],
+                'recieve' => $this->request['recieve'],
+                'created_at' => $this->request['created_at'],
+                'send_user' => $this->request['send_user'],
+            ];
+        }
+        elseif(isset($this->request['send_admin']))
+        {
+            return [
+                'message' => $this->request['message'],
+                'send' => $this->request['send'],
+                'recieve' => $this->request['recieve'],
+                'created_at' => $this->request['created_at'],
+                'send_admin' => $this->request['send_admin'],
+            ];
+        }
     }
  
     /**
@@ -63,7 +79,6 @@ class ChatMessageRecieved implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        dump('chat3');
         return 'chat_event';
     }
 }
