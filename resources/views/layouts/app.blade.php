@@ -23,10 +23,15 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @yield('style')
+    <style>
+        .navbar {
+            background-color: #FFBA08;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm sticky-top">
             <div class="container">
                 <!-- <a class="navbar-brand" href="{{ url('/') }}"> -->
                     <!-- {{ config('app.name', 'Laravel') }} -->

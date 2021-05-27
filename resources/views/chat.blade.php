@@ -9,59 +9,87 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container pb-3">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
         </div>
     </div>
- 
     {{--  チャットルーム  --}}
     <div id="room" class="mb-5">
         @foreach($messages as $key => $message)
-            {{--   送信したメッセージ  --}}
+            {{--------------   送信したメッセージ  -------------------}}
             @if($message->send == \Illuminate\Support\Facades\Auth::id())
-                <div class="send" style="text-align: right">
-                    <p>{{$message->message}} {{ $message['created_at']->format('m/d H:i') }} {{ $send_name }}</p>
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="pr-2 pl-1">
+                        <span class="small">{{ $send_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
+                    </div>
+                </div>
+                <div class="speech-bubble">
+                    <div class="sb-bubble sb-line2 sb-right">
+                        <p class="h5">{{ $message->message }}</p>
+                    </div>
                 </div>
             @elseif($message->send == \Illuminate\Support\Facades\Auth::guard('admin')->id())
-                <div class="send" style="text-align: right">
-                    <p>{{$message->message}} {{ $message['created_at']->format('m/d H:i') }} {{ $send_name }}</p>
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="pr-2 pl-1">
+                        <span class="small">{{ $send_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
+                    </div>
+                </div>
+                <div class="speech-bubble">
+                    <div class="sb-bubble sb-line2 sb-right">
+                        <p class="h5">{{ $message->message }}</p>
+                    </div>
                 </div>
             @endif
  
-            {{--   受信したメッセージ  --}}
+            {{-------------------   受信したメッセージ  ------------------------}}
             @if($message->recieve == \Illuminate\Support\Facades\Auth::id())
-                <div class="recieve" style="text-align: left">
-                    <p>{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }} {{$message->message}} </p>
+                <div class="d-flex align-items-center justify-content-start">
+                    <div class="pr-2 pl-1">
+                        <span class="small">{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
+                    </div>
+                </div>
+                <div class="speech-bubble">
+                    <div class="sb-bubble sb-line2 sb-left">
+                        <p class="h5">{{ $message->message }}</p>
+                    </div>
                 </div>
             @elseif($message->recieve == \Illuminate\Support\Facades\Auth::guard('admin')->id())
-                <div class="send" style="text-align: left">
-                    <p>{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }} {{$message->message}} </p>
+                <div class="d-flex align-items-center justify-content-start">
+                    <div class="pr-2 pl-1">
+                        <span class="small">{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
+                    </div>
+                </div>
+                <div class="speech-bubble">
+                    <div class="sb-bubble sb-line2 sb-left">
+                        <p class="h5">{{ $message->message }}</p>
+                    </div>
                 </div>
             @endif
         @endforeach
     </div>
-    <div class="fixed-bottom">
-        <form name="form" class="form-inline row">
-        
-            <textarea name="message" class="col-9 m-1 rounded-pill"></textarea>
-            <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send">送信</button>
-        </form>
-    </div>
-            
-    @auth
-        <input type="hidden" name="send" value="{{$param['send']}}">
-        <input type="hidden" name="recieve" value="{{$param['recieve']}}">
-        <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
-    @endauth
-    @auth('admin')
-        <input type="hidden" name="send" value="{{$param['send']}}">
-        <input type="hidden" name="recieve" value="{{$param['recieve']}}">
-        <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
-    @endauth
-    <input type="hidden" name="user_login" value="{{\Illuminate\Support\Facades\Auth::guard()->check()}}">
-    <input type="hidden" name="admin_login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->check()}}">
 </div>
+{{-------------------   メッセージ送信フォーム  ------------------------}}
+<div class="fixed-bottom py-1 bg-form">
+    <form name="form" class="form-inline row">
+    
+        <textarea name="message" class="col-9 m-1 rounded-pill"></textarea>
+        <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send">送信</button>
+    </form>
+</div>
+        
+@auth
+    <input type="hidden" name="send" value="{{$param['send']}}">
+    <input type="hidden" name="recieve" value="{{$param['recieve']}}">
+    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
+@endauth
+@auth('admin')
+    <input type="hidden" name="send" value="{{$param['send']}}">
+    <input type="hidden" name="recieve" value="{{$param['recieve']}}">
+    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
+@endauth
+<input type="hidden" name="user_login" value="{{\Illuminate\Support\Facades\Auth::guard()->check()}}">
+<input type="hidden" name="admin_login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->check()}}">
 
 @endsection
 @section('script')
@@ -97,20 +125,56 @@
            //もし、sendとloginの値が同じであれば右に表示する
            if(1 == user_login){
                 if(data.send === login){
-                    appendText = '<div class="send" style="text-align:right"><p>' + data.message + data.send_user + data.created_at + '</p></div> ';
+                    appendText = '<div class="d-flex align-items-center justify-content-end">'
+                               + '<div class="pr-2 pl-1">'
+                               + '<span class="small">' + data.send_user + data.created_at + '</span>'
+                               + '</div>'
+                               + '</div>'
+                               + '<div class="speech-bubble">'
+                               + '<div class="sb-bubble sb-line2 sb-right">'
+                               + '<p class="h5">' + data.message + '</p>'
+                               + '</div>'
+                               + '</div>';
                  //もし、recieveとloginの値が同じであれば左に表示する
                 }else if(data.recieve === login){
-                    appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + data.send_admin + data.created_at + '</p></div> ';
+                    appendText = '<div class="d-flex align-items-center justify-content-start">'
+                               + '<div class="pr-2 pl-1">'
+                               + '<span class="small">' + data.send_admin + data.created_at + '</span>'
+                               + '</div>'
+                               + '</div>'
+                               + '<div class="speech-bubble">'
+                               + '<div class="sb-bubble sb-line2 sb-left">'
+                               + '<p class="h5">' + data.message + '</p>'
+                               + '</div>'
+                               + '</div>';
                 }else{
                     return false;
                 }
            }
            if(1 == admin_login){
                 if(data.send === login){
-                    appendText = '<div class="send" style="text-align:right"><p>' + data.message + data.send_admin + data.created_at + '</p></div> ';
+                    appendText = '<div class="d-flex align-items-center justify-content-end">'
+                               + '<div class="pr-2 pl-1">'
+                               + '<span class="small">' + data.send_admin + data.created_at + '</span>'
+                               + '</div>'
+                               + '</div>'
+                               + '<div class="speech-bubble">'
+                               + '<div class="sb-bubble sb-line2 sb-right">'
+                               + '<p class="h5">' + data.message + '</p>'
+                               + '</div>'
+                               + '</div>';
                  //もし、recieveとloginの値が同じであれば左に表示する
                 }else if(data.recieve === login){
-                    appendText = '<div class="recieve" style="text-align:left"><p>' + data.message + data.send_user + data.created_at + '</p></div> ';
+                    appendText = '<div class="d-flex align-items-center justify-content-start">'
+                               + '<div class="pr-2 pl-1">'
+                               + '<span class="small">' + data.send_user + data.created_at + '</span>'
+                               + '</div>'
+                               + '</div>'
+                               + '<div class="speech-bubble">'
+                               + '<div class="sb-bubble sb-line2 sb-left">'
+                               + '<p class="h5">' + data.message + '</p>'
+                               + '</div>'
+                               + '</div>';
                 }else{
                     return false;
                 }

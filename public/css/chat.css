@@ -5,133 +5,133 @@
   margin: 0 auto;
 }
 
+/* -----------------------------nav----------------------------------- */
+
+
 /* -----------------------------form----------------------------------- */
-
+/* ボタンのカラー */
 .btn-info {
-  background-color: #FFBA08;
-  border-color: #FFBA08;
+  background-color: #FAA307;
+  border-color: #FAA307;
 }
-
+.btn-info:hover {
+  color: #fff;
+  background-color: #faa507b9;
+  border-color: #faa507b9;
+}
+.btn-info:focus {
+  background-color: #faa507b9;
+  border-color: #faa507b9;
+}
+/* フォームの背景 */
+.bg-form {
+  background-color: #370617;
+}
 /* -----------------------------Message----------------------------------- */
 
-main {
-  background: #eee;
-}
-
-.send {
-  height: 100px;
-}
-.recieve {
-  height: 100px;
-}
-
-::-webkit-scrollbar {
-  width: 10px
-}
-
-::-webkit-scrollbar-track {
-  background: #eee
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555
-}
-
-.wrapper {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #651FFF
-}
-
-.main {
-  background-color: #eee;
-  width: 320px;
-  position: relative;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 6px 0px 0px 0px
-}
-
-.scroll {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  height: 325px
-}
-
-.img1 {
-  border-radius: 50%;
-  background-color: #66BB6A
-}
-
-.name {
-  font-size: 8px
-}
-
-.msg {
-  background-color: #fff;
-  font-size: 11px;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: 500;
-  color: #3e3c3c
-}
-
-.between {
-  font-size: 8px;
-  font-weight: 500;
-  color: #a09e9e
-}
-
-.navbar {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-}
-
-.form-control {
-  font-size: 12px;
-  font-weight: 400;
-  width: 230px;
-  height: 30px;
-  border: none
-}
-
-form-control: focus {
-  box-shadow: none;
+/*** チャット吹き出し部分共通 ***/
+.speech-bubble {
   overflow: hidden;
-  border: none
+  padding-bottom: 10px;
 }
 
-.form-control:focus {
-  box-shadow: none !important
+.speech-bubble p {
+  margin: 0;
 }
 
-.icon1 {
-  color: #7C4DFF !important;
-  font-size: 18px !important;
-  cursor: pointer
+.speech-bubble {
+  background: #f8fafc;
 }
 
-.icon2 {
-  color: #512DA8 !important;
-  font-size: 18px !important;
+.speech-bubble:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.speech-bubble:before {
+  content: "";
+  display: table;
+}
+
+.sb-bubble:after,
+.sb-bubble:before {
+  content: " ";
+  height: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 1.2em;
+  width: 0;
+}
+
+.sb-left {
+  float: left;
+  margin-left: 20px;
+}
+
+.sb-right {
+  float: right;
+  margin-right: 20px;
+}
+/*** 現ライン風（フラット１） ***/
+
+.sb-line2 {
+  border: solid 1px #c5d0e4;
+  border-radius: 1em;
+  max-width: 70%;
+  padding: .2em 1em;
   position: relative;
-  left: 8px;
-  padding: 0px;
-  cursor: pointer
 }
 
-.icondiv {
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  padding: 2px;
-  position: relative;
-  bottom: 1px
+.sb-line2.sb-left {
+  background: #f9f9f9;
 }
+
+.sb-line2.sb-left:after {
+  background: #ffffff;
+  border: solid #c5d0e4;
+  border-radius: 1.6em 0 0 1.6em;
+  border-width: 0 0 1px 1px;
+  height: 1.6em;
+  margin: -2.3em -1px 0 0;
+  right: 100%;
+  width: .8em;
+}
+
+.sb-line2.sb-left:before {
+  background: #f9f9f9;
+  border: solid #c5d0e4;
+  border-radius: 1.6em 0 0 1.6em;
+  border-width: 0 0 1px 1px;
+  height: 1.6em;
+  margin: -1.8em -1px 0 0;
+  right: 100%;
+  width: .8em;
+}
+
+.sb-line2.sb-right {
+  background: #FAA307;
+}
+
+.sb-line2.sb-right:after {
+  background: #ffffff;
+  border: solid #c5d0e4;
+  border-radius: 0 1.6em 1.6em 0;
+  border-width: 0 1px 1px 0;
+  height: 1.6em;
+  left: 100%;
+  margin: -2.3em 0 0 -1px;
+  width: .8em;
+}
+
+.sb-line2.sb-right:before {
+  background: #FAA307;
+  border: solid #c5d0e4;
+  border-radius: 0 1.6em 1.6em 0;
+  border-width: 0 1px 1px 0;
+  height: 1.6em;
+  left: 100%;
+  margin: -1.8em 0 0 -1px;
+  width: .8em;
+}
+
