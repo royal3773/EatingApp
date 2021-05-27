@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Chat;
 
+use App\Model\User;
+use App\Model\Admin;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Admin;
-use App\User;
 
 class HomeChatController extends Controller
 {
