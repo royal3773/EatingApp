@@ -11,9 +11,6 @@
                     こちらはお店のトップページです。
                 </div>
             </div>
-            <div>
-                <a class="btn btn-primary" href = "chat">チャット画面一覧</a>
-            </div>
 
             <div>
                 <a class="btn btn-primary" href = "adminchatselect">testチャット画面一覧</a>

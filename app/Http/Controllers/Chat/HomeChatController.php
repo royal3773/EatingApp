@@ -15,14 +15,14 @@ class HomeChatController extends Controller
         // $this->middleware('auth');
     }
     //ユーザーがお店側を選ぶ
-    public function userchatselectindex()
+    public function user_chat_select_index()
     {
         $user = Auth::user();//現在ログインしているユーザーの情報を取得
         $admins = Admin::all();
         return view('user_screen.user_chat_select', ['admins' => $admins]);
     }
     //お店側がユーザーを選ぶ
-    public function adminchatselectindex()
+    public function admin_chat_select_index()
     {
         $users = User::all();
         return view('admin_screen.admin_chat_select', ['users' => $users]);

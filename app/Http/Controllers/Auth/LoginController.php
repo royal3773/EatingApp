@@ -58,7 +58,7 @@ class LoginController extends Controller
         //rememberを使用して、ログイン維持を持たせている。
         if (Auth::guard('admin')->attempt(['name' => $request->name, 'password' => $request->password], $request->get('remember'))) {
             //認証機能に引かかる前にアクセル使用としたページへ飛ばす
-            return redirect()->intended('/admintop');
+            return redirect()->intended('/admin/top');
         }
         //ログインが失敗すると前のページに戻すその時入力したデータ情報も一緒に返している、。
         return back()->withInput($request->only('name', 'remember'))->withErrors(['auth' => ['お名前またはパスワードが正しくありません。']]);
