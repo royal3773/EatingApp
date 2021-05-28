@@ -40,6 +40,6 @@ Route::view('/admin/top', 'admin_screen.admintop')->middleware('auth:admin');
 Route::get('/admin/adminchatselect', 'Chat\HomeChatController@admin_chat_select_index')->middleware('auth:admin');
 
 
+Route::get('test', 'TestController@index');
 // Route::get('/userlogin', 'UsertopController@indexlogin');
-// Route::view('test', 'admin_screen.admintop');
 // Route::get('chat', 'HomeController@chatindex');
