@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -12,9 +12,6 @@
             </div>
         </div>
     </div>
-                </div>
-                <div>
-                <a class="btn btn-primary" href = "chat">チャット画面一覧</a>
                 </div>
 
                 <div>

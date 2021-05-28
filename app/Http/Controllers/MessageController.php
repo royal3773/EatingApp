@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Admin;
-use App\Message;
+use App\Model\User;
+use App\Model\Admin;
+use App\Model\Message;
 use App\Mail\SampleNotification;
 use App\Events\ChatMessageRecieved;
 use Illuminate\Http\Request;
