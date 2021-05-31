@@ -29,6 +29,8 @@ class HomeController extends Controller
         return view('user_screen.usertop');
     }
 
+}
+
 
 
 
@@ -43,4 +45,4 @@ class HomeController extends Controller
     //     $admins = Admin::all();
     //     return view('chat_user_select', ['users' => $users, 'admins' => $admins]);
     // }
-}
+// }

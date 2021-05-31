@@ -24,6 +24,9 @@ Route::post('/chat/send' , 'MessageController@store')->name('chatSend');
 
 //ユーザー側のログイン後の画面
 Route::get('/user/top', 'HomeController@index');
+//お店情報を表示SearchRestaurant
+Route::post('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
+Route::get('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
 //チャット選択画面
 Route::get('/user/userchatselect', 'Chat\HomeChatController@user_chat_select_index')->middleware('auth');
 

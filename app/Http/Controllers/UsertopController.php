@@ -9,6 +9,5 @@ class UserTopController extends Controller
     public function index()
     {
         return view('auth.usertop');
-        
     }
 }
