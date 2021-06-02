@@ -2,6 +2,7 @@
 
 @section('style')
 <script src="{{ mix('js/usertop.js') }}"></script>
+<!-- <link href="{{ asset('css/usertop.css') }}" rel="stylesheet"> -->
 
 @endsection
 
@@ -24,15 +25,22 @@
                 </div>
             </div>
         </div>
+
     </div>
 
+        
+    </div>
                 <div>
                 <a class="btn btn-primary" href = "userchatselect">testチャット画面一覧</a>
                 </div>
 
-<script type="text/javascript">
+                <script type="text/javascript">
 
 </script>
 </div>
+@component('components.user.search_genre')
+@endcomponent
+
+
 @endsection
 

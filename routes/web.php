@@ -27,6 +27,7 @@ Route::get('/user/top', 'HomeController@index');
 //お店情報を表示SearchRestaurant
 Route::post('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
 Route::get('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
+Route::post('/user/top/genre', 'User\SearchRestaurantController@genre');
 //チャット選択画面
 Route::get('/user/userchatselect', 'Chat\HomeChatController@user_chat_select_index')->middleware('auth');
 
