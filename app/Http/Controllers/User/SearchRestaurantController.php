@@ -63,12 +63,47 @@ class SearchRestaurantController extends Controller
         $options = [
             'query' => [
                 'key' => config('hotpepper.api_key'),
-                'genre' => ['code' => $request->food,],
+                'genre' => $request->food,
                 'address' => $request->prefectures,
                 'count' => 10,
                 'format' => 'json',
             ],
         ];
+        // dd($options);
+
+        // HTTPリクエストを送信
+        $response = $client->request($method, self::REQUEST_URL, $options);
+
+        // 'format' => 'json'としたのでJSON形式でデータが返ってくるので、連想配列型のオブジェクトに変換
+        $restaurants = json_decode($response->getBody(), true)['results'];
+        // dd($restaurants);
+
+        // index.blade.phpを表示する
+        return view('user_screen.search_keyword', ['restaurants' => $restaurants]);
+
+    }
+    public function special_feature(Request $request)
+    {
+        // dd($request->special_feature);
+        // インスタンス生成
+        $client = new Client();
+
+        // HTTPリクエストメソッド
+        $method = 'GET';
+
+        // APIキーを取得
+        $this->api_key = config('hotpepper.api_key');
+        // APIキーや検索ワードなどの設定を記述
+        $options = [
+            'query' => [
+                'key' => config('hotpepper.api_key'),
+                'special' => $request->special_feature,
+                'address' => $request->prefectures,
+                'count' => 10,
+                'format' => 'json',
+            ],
+        ];
+        // dd($options);
 
         // HTTPリクエストを送信
         $response = $client->request($method, self::REQUEST_URL, $options);

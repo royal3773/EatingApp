@@ -2,7 +2,11 @@
 
 /* -----------------------------image----------------------------------- */
 
-.box {
+.jumbotron {
+  background-image: url(../image/search_meat.jpg);
+  background-size: cover;
+}
+/* .box {
   position: relative;
 }
 .box p {
@@ -19,16 +23,16 @@
 .img-fluid {
   max-width: none;
   width: 100%;
-}
+} */
 /* -----------------------------button----------------------------------- */
 
-.btn {
+/* .btn {
   margin: 10px 0px;
 }
 .btn-primary {
   color: #fff;
   background-color: #6A040F;
-  border-color: #6A040F;
+  border-color: #6A040F;#333
 }
 .btn-primary:hover {
   color: #fff;
@@ -43,9 +47,9 @@
   color: #fff;
   background-color: #6a040e94;
   border-color: #6a040e94;
-}
+} */
 
-/* ---------------------------------------------------------------- */
+/* --------------------------card-------------------------------------- */
 /* #carousel-card .carousel-control-next,
 #carousel-card .carousel-control-prev {
   width: 3%;
