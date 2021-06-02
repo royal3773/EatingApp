@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ホットペッパーAPI</title>
-</head>
-<body>
+@extends('layouts.app')
+
+
+@section('content')
+<div class="container">
     <table border="1">
         <tr>
             <th>店舗名</th>
             <th>営業時間</th>
         </tr>
         @for ($i = 0; $i < $restaurants['results_returned']; $i++)
-            <tr>
-                <td><img src="{{{ $restaurants['shop'][$i]['photo']['mobile']['l'] }}}" alt=""></td>
-                <td><a href="{{{ $restaurants['shop'][$i]['urls']['pc'] }}}">{{{ $restaurants['shop'][$i]['name'] }}}</a></td>
-                <td>{{{ $restaurants['shop'][$i]['open'] }}}</td>
-            </tr>
-        @endfor
 
     </table>
-</body>
-</html>
+    <div class="card">
+  <h5 class="card-header text-center"><a href="{{ $restaurants['shop'][$i]['urls']['pc'] }}">{{ $restaurants['shop'][$i]['name'] }}</a></h5>
+  <div class="card-body row">
+    <h5 class="card-title pl-3"><img src="{{ $restaurants['shop'][$i]['photo']['mobile']['l'] }}" alt="restaurants_img"></h5>
+    <div class="col-md-7">
+        <p class="card-text font-weight-bold mb-0">{{ $restaurants['shop'][$i]['genre']['catch'] }}</p>
+        <p class="card-text mb-0">場所　{{ $restaurants['shop'][$i]['address'] }}</p>
+        <p class="card-text mb-0">営業時間　{{ $restaurants['shop'][$i]['open'] }}</p>
+        <p class="card-text mb-0">定休日　{{ $restaurants['shop'][$i]['close'] }}</p>
+        <p class="card-text mb-0">席数　{{ $restaurants['shop'][$i]['capacity'] }}</p>
+        <p class="card-text mb-0">駐車場　{{ $restaurants['shop'][$i]['parking'] }}</p>
+    </div>
+  </div>
+</div>
+@endfor
+</div>
+@endsection
