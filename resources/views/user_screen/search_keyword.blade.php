@@ -3,11 +3,6 @@
 
 @section('content')
 <div class="container">
-    <table border="1">
-        <tr>
-            <th>店舗名</th>
-            <th>営業時間</th>
-        </tr>
         @for ($i = 0; $i < $restaurants['results_returned']; $i++)
 
     </table>
