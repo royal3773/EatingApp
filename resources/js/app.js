@@ -1,5 +1,6 @@
 
 // import Vue from 'vue';
+// import "user.top";
 import { createApp } from 'vue';
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -7,6 +8,8 @@ import { createApp } from 'vue';
  * building robust, powerful web applications using Vue and Laravel.
  */
 require('./bootstrap');
+
+require("./fontawesome");
 
 window.Vue = require("vue").default;
 

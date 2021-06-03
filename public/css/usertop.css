@@ -2,7 +2,11 @@
 
 /* -----------------------------image----------------------------------- */
 
-.box {
+.jumbotron {
+  background-image: url(../image/search_meat.jpg);
+  background-size: cover;
+}
+/* .box {
   position: relative;
 }
 .box p {
@@ -19,16 +23,16 @@
 .img-fluid {
   max-width: none;
   width: 100%;
-}
+} */
 /* -----------------------------button----------------------------------- */
 
-.btn {
+/* .btn {
   margin: 10px 0px;
 }
 .btn-primary {
   color: #fff;
   background-color: #6A040F;
-  border-color: #6A040F;
+  border-color: #6A040F;#333
 }
 .btn-primary:hover {
   color: #fff;
@@ -43,4 +47,51 @@
   color: #fff;
   background-color: #6a040e94;
   border-color: #6a040e94;
+} */
+
+/* --------------------------card-------------------------------------- */
+/* #carousel-card .carousel-control-next,
+#carousel-card .carousel-control-prev {
+  width: 3%;
+  background-color: #333;
 }
+.card-img-top {
+max-width: 100%;
+flex-shrink:0;
+ }
+ .card-text {
+   font-size: 0.1rem;
+ }
+ .col-6 {
+   padding: 0 5px;
+ }
+
+/* 通常のボタン色 */
+/* .btn-success,
+.btn-success.disabled, .btn-success:disabled {
+  color: #fff;
+  background-color: #6A040F;
+  border-color: #6A040F;
+} */
+
+/* focusされた時の枠線の色 */
+/* .btn-success:focus, .btn-success.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(110, 3, 27, 0.5);
+} */
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+/* .btn-success:hover {
+  color: #fff;
+  background-color: #6a040e94;
+  border-color: #6a040e94;
+} */
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+/* .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #6A040F;
+  border-color: #6A040F;
+} */ 

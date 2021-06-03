@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user_app')
 
 @section('navtitle')
     <a class="navbar-brand" href="javascript:history.back()">{{ $recieve_name }}</a>

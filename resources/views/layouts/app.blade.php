@@ -10,10 +10,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <!-- <script src=“https://js.pusher.com/3.2/pusher.min.js“></script>s -->
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="{{ asset('js/fontawesome.js') }}"></script> -->
     <!-- <script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.12/push.min.js></script> -->
     <!-- <script src="./push.min.js"></script> -->
     <!-- Fonts -->
@@ -27,11 +28,29 @@
         .navbar {
             background-color: #FFBA08;
         }
+        a.white:link {
+            color : #ffffff;
+        }
+        a.white:visited {
+            color : #ffffff;
+        }
+        a.white:hover {
+            color : #ffffff;
+        }
+        a.white:active {
+            color : #ffffff;
+        }
+        .font-size{
+            font-size: 10px;
+        }
+        .bg-menu{
+            background-color: #370617;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <!-- <a class="navbar-brand" href="{{ url('/') }}"> -->
                     <!-- {{ config('app.name', 'Laravel') }} -->
@@ -86,7 +105,17 @@
         <main class="py-4">
             @yield('content')
         </main>
-        @yield('script')
+            @yield('script')
     </div>
 </body>
+
+<nav class="nav nav-pills nav-justified fixed-bottom bg-menu">
+  <a class="white nav-item nav-link font-size" href="/user/top"><i class="fas fa-home"></i><p>ホーム</p></a>
+  <a class="white nav-item nav-link font-size" href="#"><i class="fas fa-heart"></i><p>お気に入り</p></a>
+  <a class="white nav-item nav-link font-size" href="/user/userchatselect"><i class="fas fa-comments"></i><p>チャット</p></a>
+  <a class="white nav-item nav-link font-size" href="#"><i class="fas fa-clipboard-check"></i><p>予約確認</p></a>
+  <a class="white nav-item nav-link font-size" href="#"><i class="fas fa-user-alt"></i><p>マイページ</p></a>
+</nav>
+
+</div>
 </html>
