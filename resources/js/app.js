@@ -9,6 +9,8 @@ import { createApp } from 'vue';
  */
 require('./bootstrap');
 
+require("./fontawesome");
+
 window.Vue = require("vue").default;
 
 /**
