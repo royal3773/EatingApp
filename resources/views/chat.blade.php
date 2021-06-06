@@ -74,7 +74,7 @@
     <form name="form" class="form-inline row">
     
         <textarea name="message" class="col-9 m-1 rounded-pill"></textarea>
-        <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send">送信</button>
+        <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send"><i class="fas fa-paper-plane"></i></button>
     </form>
 </div>
         
