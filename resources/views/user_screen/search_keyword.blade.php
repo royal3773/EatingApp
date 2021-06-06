@@ -22,21 +22,21 @@
     <li class="list-group-item">Cras justo odio</li>
     </ul>
     <form name="form">
-<h1>{{ \App\Model\Favorite::where('restaurant_id' , 'J001245525' )->get() }}</h1>
-        <input type="text" name="restaurant_count" value="{{ $restaurants['results_returned'] }}">
         <input type="text" name="restaurant_id{{ $i }}" value="{{ $restaurants['shop'][$i]['id'] }}">
-        <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send{{ $i }}">送信</button>
+        <button type="button"　 class="btn btn-info btn-lg btn-favorite col-2 m-1 rounded-pill " id="btn_send{{ $i }}" value="{{ $i }}">送信</button>
     </form>
-        <input type="text" name="user_id{{ $i }}" value="{{ Auth::id() }}">
+        <input type="text" name="i_count" value="{{ $i }}">
   </div>
-  <div class="d-block">
-<ul>
-    <li class="btn btn-info">ボタン1</li>
-    <li class="btn btn-info d-none">ボタン2</li>
-</ul>
-</div>
+  <h1>{{ $favorites->restaurant_id()->where('restaurant_id', $restaurants['shop'][$i]['id'])->exists() }}</h1>
+  <!-- <div class="d-block">
+        <ul>
+            <li class="btn btn-info">ボタン1</li>
+            <li class="btn btn-info d-none">ボタン2</li>
+        </ul> 
+  </div> -->
 </div>
 @endfor
+        <input type="text" name="user_id" value="{{ Auth::id() }}">
 </div>
 @endsection
 
@@ -44,23 +44,22 @@
 <script type="text/javascript">
 
     window.addEventListener('DOMContentLoaded', function () {
-      $('.btn-info').on('click', function() {
-  console.log('テスト');
-    $('.btn-info').removeClass('d-none');
-    $(this).addClass('d-none');
-});  
-      //ポスト送信するときは下記を追記する
+  //     $('.btn-info').on('click', function() {
+  // console.log('テスト');
+  //   $('.btn-info').removeClass('d-none');
+  //   $(this).addClass('d-none');
+// });
         $.ajaxSetup({
             headers : {
                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
             }});
-            const restaurant_count = $('input[name="restaurant_count"]').val();
 
-            for(let i = 0; i < restaurant_count; i++){
-              let restaurant_id = "input[name=" + "restaurant_id" + i + ']';
-              let user_id = "input[name=" + "user_id" + i + ']';
-              // console.log($(user_id).val());
-              $('#btn_send' + i).on('click' , function(){
+              $('.btn-favorite').on('click' , function(){
+                const i = $(this).val();
+                const restaurant_id = "input[name=" + "restaurant_id" + i + ']';
+                const user_id = 'input[name="user_id"]';
+                console.log($(restaurant_id).val());
+                console.log($(user_id).val());
                 $.ajax({
                   type : 'POST',
                   url : '/user/' + i + '/favorite',
@@ -74,11 +73,10 @@
                   
                 });
               });
-            }
         });
 
 </script>
-endsection
+@endsection
 
 
 

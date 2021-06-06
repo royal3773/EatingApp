@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Model\Favorite;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 
 class SearchRestaurantController extends Controller
@@ -42,15 +44,16 @@ class SearchRestaurantController extends Controller
 
         // 'format' => 'json'としたのでJSON形式でデータが返ってくるので、連想配列型のオブジェクトに変換
         $restaurants = json_decode($response->getBody(), true)['results'];
-        // dd($restaurants);
 
-        // index.blade.phpを表示する
-        return view('user_screen.search_keyword', ['restaurants' => $restaurants]);
+        $user_id = Auth::id();
+        $favorites = Favorite::where('user_id', $user_id)->get();
+        dd($favorites->restaurant_id());
+        
+        return view('user_screen.search_keyword', ['restaurants' => $restaurants, 'favorites' => $favorites]);
     }
 
     public function genre(Request $request) 
     {
-        // dd($request->food);
         // インスタンス生成
         $client = new Client();
 
@@ -69,22 +72,21 @@ class SearchRestaurantController extends Controller
                 'format' => 'json',
             ],
         ];
-        // dd($options);
 
         // HTTPリクエストを送信
         $response = $client->request($method, self::REQUEST_URL, $options);
 
         // 'format' => 'json'としたのでJSON形式でデータが返ってくるので、連想配列型のオブジェクトに変換
         $restaurants = json_decode($response->getBody(), true)['results'];
-        // dd($restaurants);
 
-        // index.blade.phpを表示する
-        return view('user_screen.search_keyword', ['restaurants' => $restaurants]);
+        $user_id = Auth::id();
+        $favorites = Favorite::where('user_id', $user_id)->get();
+
+        return view('user_screen.search_keyword', ['restaurants' => $restaurants, 'favorites' => $favorites]);
 
     }
     public function special_feature(Request $request)
     {
-        // dd($request->special_feature);
         // インスタンス生成
         $client = new Client();
 
@@ -103,17 +105,17 @@ class SearchRestaurantController extends Controller
                 'format' => 'json',
             ],
         ];
-        // dd($options);
 
         // HTTPリクエストを送信
         $response = $client->request($method, self::REQUEST_URL, $options);
 
         // 'format' => 'json'としたのでJSON形式でデータが返ってくるので、連想配列型のオブジェクトに変換
         $restaurants = json_decode($response->getBody(), true)['results'];
-        // dd($restaurants);
 
-        // index.blade.phpを表示する
-        return view('user_screen.search_keyword', ['restaurants' => $restaurants]);
+        $user_id = Auth::id();
+        $favorites = Favorite::where('user_id', $user_id)->get();
+
+        return view('user_screen.search_keyword', ['restaurants' => $restaurants, 'favorites' => $favorites]);
 
     }
 }

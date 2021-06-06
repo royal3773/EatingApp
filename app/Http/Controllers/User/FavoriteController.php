@@ -22,6 +22,6 @@ class FavoriteController extends Controller
             $favorites->restaurant_id = $request->input('restaurant_id');
             $favorites->user_id = $request->input('user_id');
         $favorites->save();
-            dd('こちらはできていますか？');
+            // dd('こちらはできていますか？');
     }
 }
