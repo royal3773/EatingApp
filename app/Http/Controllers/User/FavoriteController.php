@@ -13,7 +13,7 @@ class FavoriteController extends Controller
 
     }
 
-    public function store(Request $request, $favorite)
+    public function store(Request $request)
     {
         // dd($request);
         // dump('こちらはモデル前です');
@@ -23,5 +23,11 @@ class FavoriteController extends Controller
             $favorites->user_id = $request->input('user_id');
         $favorites->save();
             // dd('こちらはできていますか？');
+    }
+
+    public function delete(Request $request)
+    {
+        $restaurant_id = $request->restaurant_id;
+        Favorite::where('restaurant_id', $restaurant_id )->delete();
     }
 }

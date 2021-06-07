@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('style')
+    <link href="{{ asset('css/search_keyword.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container">
@@ -18,22 +21,22 @@
         <p class="card-text mb-0">席数　{{ $restaurants['shop'][$i]['capacity'] }}</p>
         <p class="card-text mb-0">駐車場　{{ $restaurants['shop'][$i]['parking'] }}</p>
     </div>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    </ul>
+
     <form name="form">
-        <input type="text" name="restaurant_id{{ $i }}" value="{{ $restaurants['shop'][$i]['id'] }}">
-        <button type="button"　 class="btn btn-info btn-lg btn-favorite col-2 m-1 rounded-pill " id="btn_send{{ $i }}" value="{{ $i }}">送信</button>
+        <input type="hidden" name="restaurant_id{{ $i }}" value="{{ $restaurants['shop'][$i]['id'] }}">
+    @if(0 === $favorites->where('restaurant_id', $restaurants['shop'][$i]['id'])->count())
+        <button type="button"　 class="btn  btn-favorite-register btn-check1 btn-change1{{ $i }} btn-outline-danger col m-1 rounded-pill" value="{{ $i }}"><i class="far fa-heart"></i>お気に入り追加</button>
+    @else
+        <button type="button"　 class="btn  btn-favorite-delete btn-check2 btn-change2{{ $i }} btn-danger col m-1 rounded-pill" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
+    @endif
+        <button type="button"　 class="btn  btn-favorite-register btn-check2 btn-change2{{ $i }} btn-outline-danger col m-1 rounded-pill d-none" value="{{ $i }}"　onclick="style.display='none'"><i class="far fa-heart"></i>お気に入り追加</button>
+    
+        <button type="button"　 class="btn  btn-favorite-delete btn-check1 btn-change1{{ $i }} btn-danger col m-1 rounded-pill d-none" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
     </form>
-        <input type="text" name="i_count" value="{{ $i }}">
+
   </div>
-  <h1>{{ $favorites->restaurant_id()->where('restaurant_id', $restaurants['shop'][$i]['id'])->exists() }}</h1>
-  <!-- <div class="d-block">
-        <ul>
-            <li class="btn btn-info">ボタン1</li>
-            <li class="btn btn-info d-none">ボタン2</li>
-        </ul> 
-  </div> -->
+
+
 </div>
 @endfor
         <input type="text" name="user_id" value="{{ Auth::id() }}">
@@ -49,17 +52,27 @@
   //   $('.btn-info').removeClass('d-none');
   //   $(this).addClass('d-none');
 // });
+        //ボタンの切り替え作業　登録<->削除
+        $('.btn-check1').on('click', function() {
+          let i = $(this).val();
+          $('.btn-change1' + i).removeClass('d-none');
+          $(this).addClass('d-none');
+        })
+        //ボタンの切り替え作業 削除<->登録
+        $('.btn-check2').on('click', function() {
+          let i = $(this).val();
+          $('.btn-change2' + i).removeClass('d-none');
+          $(this).addClass('d-none');
+        })
         $.ajaxSetup({
             headers : {
                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
             }});
-
-              $('.btn-favorite').on('click' , function(){
+              //お気に入りのお店を登録
+              $('.btn-favorite-register').on('click' , function(){
                 const i = $(this).val();
                 const restaurant_id = "input[name=" + "restaurant_id" + i + ']';
                 const user_id = 'input[name="user_id"]';
-                console.log($(restaurant_id).val());
-                console.log($(user_id).val());
                 $.ajax({
                   type : 'POST',
                   url : '/user/' + i + '/favorite',
@@ -73,7 +86,26 @@
                   
                 });
               });
+              //お気に入りのお店を削除
+              $('.btn-favorite-delete').on('click' , function(){
+                const i = $(this).val();
+                const restaurant_id = "input[name=" + "restaurant_id" + i + ']';
+                const user_id = 'input[name="user_id"]';
+                $.ajax({
+                  type : 'POST',
+                  url : '/user/' + i + '/favorite_delete',
+                  data : {
+                    restaurant_id : $(restaurant_id).val(),
+                    user_id : $(user_id).val(),
+                  }
+                }).done(function(result){
+                  $('input[name="restaurant_id{{ $i }}"]').val('');
+                }).fail(function(result){
+                  
+                });
+              });
         });
+
 
 </script>
 @endsection

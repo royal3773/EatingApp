@@ -46,8 +46,8 @@ class SearchRestaurantController extends Controller
         $restaurants = json_decode($response->getBody(), true)['results'];
 
         $user_id = Auth::id();
-        $favorites = Favorite::where('user_id', $user_id)->get();
-        dd($favorites->restaurant_id());
+        $favorites = Favorite::where('user_id', $user_id)->get(['restaurant_id']);
+        // dd($favorites);
         
         return view('user_screen.search_keyword', ['restaurants' => $restaurants, 'favorites' => $favorites]);
     }
