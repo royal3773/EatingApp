@@ -39,7 +39,7 @@
 
 </div>
 @endfor
-        <input type="text" name="user_id" value="{{ Auth::id() }}">
+        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 </div>
 @endsection
 
@@ -47,11 +47,7 @@
 <script type="text/javascript">
 
     window.addEventListener('DOMContentLoaded', function () {
-  //     $('.btn-info').on('click', function() {
-  // console.log('テスト');
-  //   $('.btn-info').removeClass('d-none');
-  //   $(this).addClass('d-none');
-// });
+
         //ボタンの切り替え作業　登録<->削除
         $('.btn-check1').on('click', function() {
           let i = $(this).val();
@@ -86,6 +82,7 @@
                   
                 });
               });
+              
               //お気に入りのお店を削除
               $('.btn-favorite-delete').on('click' , function(){
                 const i = $(this).val();
