@@ -3,7 +3,10 @@
 @section('style')
 <script src="{{ mix('js/usertop.js') }}"></script>
 <link href="{{ asset('css/usertop.css') }}" rel="stylesheet">
+@endsection
 
+@section('navtitle')
+<li class="navbar-brand">トップページ</li>
 @endsection
 
 @section('content')
@@ -11,12 +14,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
                       <div class="jumbotron">
                           <form class="input-group my-5" action="/user/top/search_keyword" method="POST">
                           @csrf
-                              <input type="search" name="keyword" class="form-control rounded" placeholder="Search" aria-label="Search">
-                              <button type="submit" class="btn btn-success">search</button>
+                              <input type="search" name="keyword" class="form-control rounded" placeholder="（例）東京　寿司　・・・" aria-label="Search">
+                              <button type="submit" class="btn btn-success">search <i class="fas fa-search"></i></button>
                           </form>
                           <form class="input-group justify-content-center my-5" action="/user/top/search_keyword" method="POST">
                           @csrf
@@ -30,11 +32,6 @@
             </div>
         </div>
     </div>
-
-
-                <div>
-                <a class="btn btn-primary" href = "userchatselect">testチャット画面一覧</a>
-                </div>
 
   @component('components.user.search_genre')
   @endcomponent

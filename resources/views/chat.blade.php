@@ -1,7 +1,7 @@
 @extends('layouts.user_app')
 
 @section('navtitle')
-    <a class="navbar-brand" href="javascript:history.back()">{{ $recieve_name }}</a>
+    <a class="navbar-brand" href="javascript:history.back()"><i class="fas fa-chevron-left"></i> {{ $recieve_name }}</a>
 @endsection
 
 @section('style')
@@ -99,7 +99,7 @@
        //ログを有効にする
        Pusher.logToConsole = true;
        //pusherを指定
-       var pusher = new Pusher('64fd8c552ef95fa6e67e', {
+       var pusher = new Pusher("{{ config('pusher.api_key') }}", {
            cluster  : 'ap3',
            encrypted: true
        });

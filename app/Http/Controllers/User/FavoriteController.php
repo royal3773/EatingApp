@@ -18,7 +18,8 @@ class FavoriteController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $favorites_id = Favorite::where('user_id', $user_id)->get('restaurant_id')->toArray();
+        $favorites = Favorite::where('user_id', $user_id)->get('restaurant_id');
+        $favorites_id = $favorites->toArray();
         // dd($favorites[0]['restaurant_id']);
         // インスタンス生成
         $client = new Client();
@@ -47,13 +48,16 @@ class FavoriteController extends Controller
             $response = $client->request($method, self::REQUEST_URL, $options);
             
             // 'format' => 'json'としたのでJSON形式でデータが返ってくるので、連想配列型のオブジェクトに変換
-            $restaurants = json_decode($response->getBody(), true)['results'];
-            array_merge($restaurants);
-            dump($restaurants);
-            $counter++;
+            $restaurant = json_decode($response->getBody(), true)['results'];
+            $restaurants[] = $restaurant;
+            // array_merge_recursive($restaurants, json_decode($response->getBody(), true)['results']);
+            // dump($restaurants);
+            // $counter++;
             // dump($."アイウエオ"."$counter");
         }
-        dd($restaurants);
+            // dd($restaurants);
+            $count = count($restaurants);
+        return view('user_screen.favorite', ['restaurants' => $restaurants, 'count' => $count, 'favorites' => $favorites]);
     }
 
     public function store(Request $request)

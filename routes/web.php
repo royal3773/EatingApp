@@ -35,6 +35,10 @@ Route::post('/user/{favorite}/favorite', 'User\FavoriteController@store');
 Route::post('/user/{favorite}/favorite_delete', 'User\FavoriteController@delete');
 //チャット選択画面
 Route::get('/user/userchatselect', 'Chat\HomeChatController@user_chat_select_index')->middleware('auth');
+//予約画面
+
+//設定画面
+Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
 
 
 //お店側のログイン機能を実装

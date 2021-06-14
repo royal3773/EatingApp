@@ -4,6 +4,12 @@
     <link href="{{ asset('css/user_chat_select.css') }}" rel="stylesheet">
 @endsection
 
+
+@section('navtitle')
+<li class="navbar-brand">チャット</li>
+@endsection
+
+
 @section('content')
 <div class="container">
     <div class="row">
