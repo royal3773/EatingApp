@@ -5,46 +5,47 @@
 @endsection
 
 @section('navtitle')
-    <a class="navbar-brand" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> 検索一覧</a>
+    <li class="navbar-brand">お気に入り</li>
 @endsection
 
 @section('content')
-<div class="container">
-        @for ($i = 0; $i < $restaurants['results_returned']; $i++)
+@for ($i = 0; $i < $count; $i++)
 
-    </table>
-    <div class="card">
-  <h5 class="card-header text-center"><a href="{{ $restaurants['shop'][$i]['urls']['pc'] }}">{{ $restaurants['shop'][$i]['name'] }}</a></h5>
-  <div class="card-body row">
-    <h5 class="card-title pl-3"><img src="{{ $restaurants['shop'][$i]['photo']['mobile']['l'] }}" alt="restaurants_img"></h5>
-    <div class="col-md-7">
-        <p class="card-text font-weight-bold mb-0">{{ $restaurants['shop'][$i]['genre']['catch'] }}</p>
-        <p class="card-text mb-0">場所　{{ $restaurants['shop'][$i]['address'] }}</p>
-        <p class="card-text mb-0">営業時間　{{ $restaurants['shop'][$i]['open'] }}</p>
-        <p class="card-text mb-0">定休日　{{ $restaurants['shop'][$i]['close'] }}</p>
-        <p class="card-text mb-0">席数　{{ $restaurants['shop'][$i]['capacity'] }}</p>
-        <p class="card-text mb-0">駐車場　{{ $restaurants['shop'][$i]['parking'] }}</p>
-    </div>
+</table>
+<div class="card">
+<h5 class="card-header text-center"><a href="{{ $restaurants[$i]['shop'][0]['urls']['pc'] }}">{{ $restaurants[$i]['shop'][0]['name'] }}</a></h5>
+<div class="card-body row">
+<h5 class="card-title pl-3"><img src="{{ $restaurants[$i]['shop'][0]['photo']['mobile']['l'] }}" alt="restaurants_img"></h5>
+<div class="col-md-7">
+    <p class="card-text font-weight-bold mb-0">{{ $restaurants[$i]['shop'][0]['genre']['catch'] }}</p>
+    <p class="card-text mb-0">場所　{{ $restaurants[$i]['shop'][0]['address'] }}</p>
+    <p class="card-text mb-0">営業時間　{{ $restaurants[$i]['shop'][0]['open'] }}</p>
+    <p class="card-text mb-0">定休日　{{ $restaurants[$i]['shop'][0]['close'] }}</p>
+    <p class="card-text mb-0">席数　{{ $restaurants[$i]['shop'][0]['capacity'] }}</p>
+    <p class="card-text mb-0">駐車場　{{ $restaurants[$i]['shop'][0]['parking'] }}</p>
+</div>
 
-    <form name="form">
-        <input type="hidden" name="restaurant_id{{ $i }}" value="{{ $restaurants['shop'][$i]['id'] }}">
-    @if(0 === $favorites->where('restaurant_id', $restaurants['shop'][$i]['id'])->count())
-        <button type="button"　 class="btn  btn-favorite-register btn-check1 btn-change1{{ $i }} btn-outline-danger col m-1 rounded-pill" value="{{ $i }}"><i class="far fa-heart"></i>お気に入り追加</button>
-    @else
-        <button type="button"　 class="btn  btn-favorite-delete btn-check2 btn-change2{{ $i }} btn-danger col m-1 rounded-pill" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
-    @endif
-        <button type="button"　 class="btn  btn-favorite-register btn-check2 btn-change2{{ $i }} btn-outline-danger col m-1 rounded-pill d-none" value="{{ $i }}"　onclick="style.display='none'"><i class="far fa-heart"></i>お気に入り追加</button>
-    
-        <button type="button"　 class="btn  btn-favorite-delete btn-check1 btn-change1{{ $i }} btn-danger col m-1 rounded-pill d-none" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
-    </form>
+<form name="form">
+    <input type="hidden" name="restaurant_id{{ $i }}" value="{{ $restaurants[$i]['shop'][0]['id'] }}">
+@if(0 === $favorites->where('restaurant_id', $restaurants[$i]['shop'][0]['id'])->count())
+    <button type="button"　 class="btn  btn-favorite-register btn-check1 btn-change1{{ $i }} btn-outline-danger col m-1 rounded-pill" value="{{ $i }}"><i class="far fa-heart"></i>お気に入り追加</button>
+@else
+    <button type="button"　 class="btn  btn-favorite-delete btn-check2 btn-change2{{ $i }} btn-danger col m-1 rounded-pill" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
+@endif
+    <button type="button"　 class="btn  btn-favorite-register btn-check2 btn-change2{{ $i }} btn-outline-danger col m-1 rounded-pill d-none" value="{{ $i }}"　onclick="style.display='none'"><i class="far fa-heart"></i>お気に入り追加</button>
 
-  </div>
+    <button type="button"　 class="btn  btn-favorite-delete btn-check1 btn-change1{{ $i }} btn-danger col m-1 rounded-pill d-none" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
+</form>
+
+</div>
 
 
 </div>
 @endfor
-        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 </div>
+
+
 @endsection
 
 @section('script')
