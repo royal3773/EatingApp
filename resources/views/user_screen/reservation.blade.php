@@ -12,14 +12,15 @@
 
 @section('content')
 <div class="container">
-    @isset($message)
+    @if (session('flash_message'))
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <h5 class="alert-heading text-center">{{ session('flash_message') }}</h5>
+        <div class="text-center">万が一ご都合によりキャンセルされる場合は予約確認画面から早めの手続きをお願いします。</div>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    @endisset
+    @endif
     <h1 class="text-center">予約を申し込みます</h1>
 <div class="row justify-content-center">
         <div class="col-md-8">

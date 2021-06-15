@@ -38,6 +38,9 @@ Route::get('/user/userchatselect', 'Chat\HomeChatController@user_chat_select_ind
 //予約画面
 Route::get('/user/reservation/{adminId}', 'User\ReservationController@index')->middleware('auth');
 Route::post('/user/reservation/{adminId}', 'User\ReservationController@store');
+//予約確認画面
+Route::get('/user/reservationcheck','User\ReservationController@indexcheck')->middleware('auth');
+Route::delete('/user/reservationcheck', 'User\ReservationController@destroy');
 //設定画面
 Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
 

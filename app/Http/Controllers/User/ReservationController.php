@@ -21,6 +21,10 @@ class ReservationController extends Controller
         $afterday = date("Y-m-d", strtotime($today. "+3 months"));
         return view('user_screen.reservation', ['admin' => $admin, 'user' => $user, 'today' => $today, 'afterday' => $afterday]);
     }
+    public function indexcheck()
+    {
+        return view('user_screen.reservation_check');
+    }
 
     public function store(Request $request)
     {
@@ -37,9 +41,12 @@ class ReservationController extends Controller
 
             $reservation->comment = $request->input('comment', NULL);
         $reservation->save();
+
+        $admin_id = $request->input('admin_id');
         $user_name = $request->input('user_name');
-        $message = $user_name. "様　ありがとうございます。予約は完了いたしました。万が一ご都合によりキャンセルされる場合は予約確認画面から早めの手続きをお願いします。";
-        return view('user_screen.reservation', ['message' => $message]);
-        // return redirect()->action('TestController@show', ['id' => 12]); 
+        $flash_message = $user_name. "様　ありがとうございます。予約は完了いたしました。";
+        session()->flash('flash_message', $flash_message);
+
+        return redirect('user/reservation/'. $admin_id);
     }
 }

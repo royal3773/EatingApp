@@ -107,7 +107,7 @@
             <a class="white nav-item nav-link font-size" href="/user/top"><i class="fas fa-home"></i><p>ホーム</p></a>
             <a class="white nav-item nav-link font-size" href="/user/favorite"><i class="fas fa-heart"></i><p>お気に入り</p></a>
             <a class="white nav-item nav-link font-size" href="/user/userchatselect"><i class="fas fa-comments"></i><p>チャット</p></a>
-            <a class="white nav-item nav-link font-size" href="#"><i class="fas fa-clipboard-check"></i><p>予約確認</p></a>
+            <a class="white nav-item nav-link font-size" href="/user/reservationcheck"><i class="fas fa-clipboard-check"></i><p>予約確認</p></a>
             <a class="white nav-item nav-link font-size" href="#"><i class="fas fa-user-alt"></i><p>マイページ</p></a>
         </nav>
     </div>
