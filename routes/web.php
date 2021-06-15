@@ -36,7 +36,8 @@ Route::post('/user/{favorite}/favorite_delete', 'User\FavoriteController@delete'
 //チャット選択画面
 Route::get('/user/userchatselect', 'Chat\HomeChatController@user_chat_select_index')->middleware('auth');
 //予約画面
-
+Route::get('/user/reservation/{adminId}', 'User\ReservationController@index')->middleware('auth');
+Route::post('/user/reservation/{adminId}', 'User\ReservationController@store');
 //設定画面
 Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
 
