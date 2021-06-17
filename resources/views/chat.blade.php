@@ -75,7 +75,9 @@
     
         <textarea name="message" class="col-7 m-1 rounded-pill"></textarea>
         <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" id="btn_send"><i class="fas fa-paper-plane"></i></button>
+        @auth
         <button type="button"　 class="btn btn-info btn-lg col-2 m-1 rounded-pill" onclick="location.href='/user/reservation/{{$param['recieve']}}'"><i class="fas fa-calendar-check"></i></button>
+        @endauth
     </form>
 </div>
         

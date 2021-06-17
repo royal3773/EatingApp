@@ -55,6 +55,9 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 Route::view('/admin/top', 'admin_screen.admintop')->middleware('auth:admin');
 //チャット選択画面
 Route::get('/admin/adminchatselect', 'Chat\HomeChatController@admin_chat_select_index')->middleware('auth:admin');
+//お店側予約確認
+Route::get('/admin/reservation', 'Admin\ReservationCalendarController@index')->middleware('auth:admin');
+
 
 
 Route::get('test', 'TestController@index');

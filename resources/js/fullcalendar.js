@@ -1,3 +1,4 @@
+// resources/js/fullcalendar.js
 import { Calendar } from '@fullcalendar/core'
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -10,8 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
     allDaySlot: false,
     plugins: [timeGridPlugin, momentTimezonePlugin, interactionPlugin],
     timeZone: 'Asia/Tokyo', // momentTimezonePlugin
-    defaultView: 'timeGridWeek',
+    initialView: 'timeGridWeek',
+    locale: 'ja',
+    navLinks: 'true',
 
+    
     events: []
   });
 
