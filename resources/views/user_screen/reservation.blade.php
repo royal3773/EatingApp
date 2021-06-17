@@ -89,9 +89,9 @@
                         </div>
                         <!-- その他 -->
                         <div class="form-group row">
-                            <label for="message" class="col-md-4 col-form-label text-md-right">その他ご要望</label>
+                            <label for="comment" class="col-md-4 col-form-label text-md-right">その他ご要望</label>
                             <div class="col-md-6">
-                                <textarea class="form-control" id="message" rows="3" name="message" placeholder="例）個室でお願いします。　電話番号を変更しました。..."></textarea>
+                                <textarea class="form-control" id="comment" rows="3" name="comment" placeholder="例）個室でお願いします。　電話番号を変更しました。..."></textarea>
                             </div>
                         </div>
                         <input type="hidden" name="admin_id" value="{{ $admin->id }}">

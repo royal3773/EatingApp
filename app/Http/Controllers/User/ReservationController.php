@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
+    //予約フォームページ
     public function index($adminId)
     {
         $admin = Admin::find($adminId);
@@ -21,11 +22,15 @@ class ReservationController extends Controller
         $afterday = date("Y-m-d", strtotime($today. "+3 months"));
         return view('user_screen.reservation', ['admin' => $admin, 'user' => $user, 'today' => $today, 'afterday' => $afterday]);
     }
+    //予約確認画面
     public function indexcheck()
     {
-        return view('user_screen.reservation_check');
+        //日付が近い順に取得
+        $user_id = Auth::id();
+        $reservations = Reservation::where('user_id', $user_id)->oldest('date')->get();
+        return view('user_screen.reservation_check', ['reservations' => $reservations]);
     }
-
+    //予約登録処理
     public function store(Request $request)
     {
         // dd($request);
@@ -37,6 +42,8 @@ class ReservationController extends Controller
             $date = $request->input('date');
             $time = $request->input('time');
             $datetime = $date. " ". $time;
+            $datetime = strtotime($datetime);
+            $datetime = date('Y-m-d H:i:s', $datetime);
             $reservation->date = $datetime;
 
             $reservation->comment = $request->input('comment', NULL);
@@ -48,5 +55,17 @@ class ReservationController extends Controller
         session()->flash('flash_message', $flash_message);
 
         return redirect('user/reservation/'. $admin_id);
+    }
+
+    public function destroy(Request $request)
+    {
+        $reservation_id = $request->reservation_id;
+        Reservation::where('id', $reservation_id )->delete();
+        
+        $admin_name = $request->admin_name;
+        $date = $request->date;
+        $flash_message = $admin_name. "の". $date. "からのご予約をキャンセルいたしました。";
+        session()->flash('flash_message', $flash_message);
+        return redirect('user/reservationcheck');
     }
 }
