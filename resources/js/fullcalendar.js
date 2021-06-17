@@ -3,19 +3,25 @@ import { Calendar } from '@fullcalendar/core'
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import momentTimezonePlugin from '@fullcalendar/moment-timezone';
+import listPlugin from '@fullcalendar/list';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
 
   const calendar = new Calendar(calendarEl, {
     allDaySlot: false,
-    plugins: [timeGridPlugin, momentTimezonePlugin, interactionPlugin],
+    plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
     timeZone: 'Asia/Tokyo', // momentTimezonePlugin
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     locale: 'ja',
     navLinks: 'true',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,'
+    },
 
-    
     events: []
   });
 
