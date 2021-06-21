@@ -8,7 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 
 document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
-
+  
   const calendar = new Calendar(calendarEl, {
     allDaySlot: false,
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
@@ -21,9 +21,28 @@ document.addEventListener('DOMContentLoaded', function () {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,'
     },
+    
+    events: '/admin/reservation/events',
+  });
+  const calendarElmonth = document.getElementById('calendarmonth');
 
-    events: []
+  const calendarmonth = new Calendar(calendarElmonth, {
+    allDaySlot: false,
+    plugins: [dayGridPlugin],
+    timeZone: 'Asia/Tokyo', // momentTimezonePlugin
+    initialView: 'dayGridMonth',
+    locale: 'ja',
+    navLinks: 'true',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth'
+    },
+
+    events: '/admin/reservation/events/month',
   });
 
   calendar.render();
+
+  calendarmonth.render();
 });

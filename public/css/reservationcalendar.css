@@ -3,3 +3,10 @@
 .calendar {
   width: 100%;
 }
+.calendarmonth{
+  width: 40%;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: black;
+}

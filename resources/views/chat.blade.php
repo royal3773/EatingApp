@@ -101,7 +101,7 @@
 
        //ログを有効にする
        Pusher.logToConsole = true;
-       //pusherを指定
+       //pusherを指定105~108をコントローラーに入れる
        var pusher = new Pusher("{{ config('pusher.api_key') }}", {
            cluster  : 'ap3',
            encrypted: true

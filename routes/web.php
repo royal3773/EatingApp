@@ -57,9 +57,10 @@ Route::view('/admin/top', 'admin_screen.admintop')->middleware('auth:admin');
 Route::get('/admin/adminchatselect', 'Chat\HomeChatController@admin_chat_select_index')->middleware('auth:admin');
 //お店側予約確認
 Route::get('/admin/reservation', 'Admin\ReservationCalendarController@index')->middleware('auth:admin');
+Route::get('/admin/reservation/events', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
+Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
 
 
-
-Route::get('test', 'TestController@index');
+Route::get('test', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
 // Route::get('/userlogin', 'UsertopController@indexlogin');
 // Route::get('chat', 'HomeController@chatindex');
