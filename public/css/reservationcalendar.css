@@ -1,10 +1,10 @@
 @charset "UTF-8";
-
-.calendar {
-  width: 100%;
+.fc-day-sat{
+  background-color: #eaf4ff;
 }
-.calendarmonth{
-  width: 40%;
+.fc-day-sun{
+  background-color: #9c8d8d;
+
 }
 
 a, a:link, a:visited, a:hover, a:active {

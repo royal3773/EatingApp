@@ -27,49 +27,36 @@ class ReservationCalendarController extends Controller
     public function events()
     {
         $admin_id = Auth::id();
-        $reservations = Reservation::where('admin_id', $admin_id)->get();
+        $reservations = Reservation::where('admin_id', $admin_id)->selectRaw("DATE_FORMAT(date, '%Y-%m-%eT%H:%i') as time, count, comment, user_id")->get();
         $events = [];
+        
         foreach($reservations as $reservation)
         {
-            $event['title'] = $reservation->user->name;
-            $event['start'] = $reservation->date;
+            if($reservation->comment){
+                $event['title'] = $reservation->user->name."　".$reservation->count."名"."　連絡事項　".$reservation->comment;
+            }else{
+                $event['title'] = $reservation->user->name."　".$reservation->count."名"."　連絡事項　無し";
+            }
+            // dd($reservations);
+            $event['start'] = $reservation->time;
             $events[] = $event;
         }
+        // dd($events);
         echo json_encode($events);
     }
     public function eventsmonth()
     {
         $admin_id = Auth::id();
-        $dates = Reservation::where('admin_id', $admin_id)->select('date', 'count', DB::raw('DATE_FORMAT(date, "%Y-%m-%d") as eventsday'))->get('date')->groupBy('eventsday');
-        // dd($dates);
-        $days = [];
-        $pairs = [];
-        $counts = [];
-        foreach($dates as $key => $date)
+        //日付、日付ごとの組数、日付ごとの人数の合計を取得
+        $dates = Reservation::where('admin_id', $admin_id)->selectRaw("DATE_FORMAT(date, '%Y-%m-%e') as eventsday ,COUNT(count) as pairs ,SUM(count) as total_count")->groupBy('eventsday')->get();
+        $events = [];
+        foreach($dates as $date)
         {
-            $pair = $date->count();
-            $pairs[] = $pair;
-            $day = $key;
-            $days[] = $day;
-            $counter = 0;
-            for($i=0; $i<$pair; $i++)
-            {
-                $count = $date[$i]->count;
-                $counter += $count;
-            }
-            $counts[] = $counter;
+            $event['title'] = $date->total_count."人".$date->pairs."組";
+            $event['start'] = $date->eventsday;
+            $event['escription'] = '2泊3日（7日6:00～9日22:00）';
+            $events[] = $event;
         }
-        dump($dates);
-        dump($days);
-        dump($pairs);
-        dd($counts);
-
+        echo json_encode($events);
     }
-    // foreach($reservations as $reservation)
-    // {
-        //  $reservation['start']
-    //日付が同じものを抽出して人数を足す　日付と合計値を１つの配列に代入.
-    // title: 'The Title', // a property!
-    // start: '2018-09-01', // a property!
-    // end: '2018-09-02'
 }

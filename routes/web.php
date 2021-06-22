@@ -61,6 +61,6 @@ Route::get('/admin/reservation/events', 'Admin\ReservationCalendarController@eve
 Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
 
 
-Route::get('test', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
+Route::get('test', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
 // Route::get('/userlogin', 'UsertopController@indexlogin');
 // Route::get('chat', 'HomeController@chatindex');
