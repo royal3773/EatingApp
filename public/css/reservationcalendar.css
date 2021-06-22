@@ -1,0 +1,12 @@
+@charset "UTF-8";
+.fc-day-sat{
+  background-color: #eaf4ff;
+}
+.fc-day-sun{
+  background-color: #9c8d8d;
+
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: black;
+}

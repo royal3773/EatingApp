@@ -36,7 +36,11 @@ Route::post('/user/{favorite}/favorite_delete', 'User\FavoriteController@delete'
 //チャット選択画面
 Route::get('/user/userchatselect', 'Chat\HomeChatController@user_chat_select_index')->middleware('auth');
 //予約画面
-
+Route::get('/user/reservation/{adminId}', 'User\ReservationController@index')->middleware('auth');
+Route::post('/user/reservation/{adminId}', 'User\ReservationController@store');
+//予約確認画面
+Route::get('/user/reservationcheck','User\ReservationController@indexcheck')->middleware('auth');
+Route::delete('/user/reservationcheck', 'User\ReservationController@destroy');
 //設定画面
 Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
 
@@ -51,8 +55,12 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 Route::view('/admin/top', 'admin_screen.admintop')->middleware('auth:admin');
 //チャット選択画面
 Route::get('/admin/adminchatselect', 'Chat\HomeChatController@admin_chat_select_index')->middleware('auth:admin');
+//お店側予約確認
+Route::get('/admin/reservation', 'Admin\ReservationCalendarController@index')->middleware('auth:admin');
+Route::get('/admin/reservation/events', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
+Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
 
 
-Route::get('test', 'TestController@index');
+Route::get('test', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
 // Route::get('/userlogin', 'UsertopController@indexlogin');
 // Route::get('chat', 'HomeController@chatindex');

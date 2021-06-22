@@ -11,6 +11,14 @@ require('./bootstrap');
 
 require("./fontawesome");
 
+// require("./fullcalendar");
+// require('@fullcalendar/core');
+// require('@fullcalendar/bootstrap');
+// require('@fullcalendar/list');
+// require('@fullcalendar/timegrid');
+// require('@fullcalendar/daygrid');
+// require('@fullcalendar/interaction');
+
 window.Vue = require("vue").default;
 
 /**

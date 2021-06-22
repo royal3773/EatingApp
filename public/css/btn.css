@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+
+/* 通常のボタン色 */
+.btn-success,
+.btn-success.disabled, .btn-success:disabled {
+  color: #fff;
+  background-color: #6A040F;
+  border-color: #6A040F;
+}
+
+/* focusされた時の枠線の色 */
+.btn-success:focus, .btn-success.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(110, 3, 27, 0.5);
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-success:hover {
+  color: #fff;
+  background-color: #6a040e94;
+  border-color: #6a040e94;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #6A040F;
+  border-color: #6A040F;
+}
