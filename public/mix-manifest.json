@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/usertop.js": "/js/usertop.js",
     "/js/fullcalendar.js": "/js/fullcalendar.js",
+    "/js/show_chart.js": "/js/show_chart.js",
     "/css/fullcalendar.css": "/css/fullcalendar.css",
     "/css/app.css": "/css/app.css"
 }

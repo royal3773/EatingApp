@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/usertop.js', 'public/js')
    .js('resources/js/fullcalendar.js', 'public/js')
+   .js('resources/js/show_chart.js', 'public/js')
    .vue()
    .sass('resources/sass/app.scss', 'public/css')
    .sass('resources/sass/fullcalendar.scss', 'public/css')

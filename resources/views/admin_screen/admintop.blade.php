@@ -18,6 +18,9 @@
             <div>
                 <a class="btn btn-primary" href="/admin/reservation">カレンダー予約一覧</a>
             </div>
+            <div>
+                <a class="btn btn-primary" href="/admin/chart">グラフ画面</a>
+            </div>
         </div>
     </div>
 </div>
