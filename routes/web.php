@@ -62,6 +62,6 @@ Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarControll
 //グラフ画面
 Route::get('/admin/chart', 'Admin\ChartController@index')->middleware('auth:admin');
 
-Route::get('test', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
+Route::get('test', 'Admin\ChartController@index')->middleware('auth:admin');
 // Route::get('/userlogin', 'UsertopController@indexlogin');
 // Route::get('chat', 'HomeController@chatindex');
