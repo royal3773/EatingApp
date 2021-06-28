@@ -79,7 +79,7 @@
                         <div class="form-group row">
                             <label for="time" class="col-md-4 col-form-label text-md-right">予約時間(10:00~23:00)</label>
                             <div class="col-md-6">
-                                <input id="time" type="time" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" name="time" value="{{ old('time') }}" min="10:00" max="22:00">
+                                <input id="time" type="time" class="form-control{{ $errors->has('time') ? ' is-invalid' : '' }}" name="time" value="{{ old('time') }}" required min="10:00" max="22:00">
                                 @error('time')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

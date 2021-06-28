@@ -14,6 +14,7 @@
            <canvas id="chart1"></canvas>
            <canvas id="linechart"></canvas>
            <canvas id="barweek"></canvas>
+           <canvas id="baravgweek"></canvas>
            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
        </div>
 
@@ -29,15 +30,20 @@
            data2 = @json($counts);
            make_chart1(id2,labels2,data2);
 
-           linechartid = 'linechart';
-           linelabels = @json($linekeys);
-           linedata = @json($linecounts);
-           make_linechart(linechartid,linelabels,linedata);
+           line_chart_id = 'linechart';
+           line_labels = @json($line_labels);
+           line_data = @json($line_data);
+           make_line_chart(line_chart_id,line_labels,line_data);
 
-           barweekid = 'barweek';
-           barweeklabels = @json($barweekkeys);
-           barweekdata = @json($barweekvalues);
-           make_barweekchart(barweekid, barweeklabels, barweekdata)
+           bar_week_id = 'barweek';
+           bar_week_labels = @json($bar_week_labels);
+           bar_week_data = @json($bar_week_data);
+           make_bar_week_chart(bar_week_id, bar_week_labels, bar_week_data);
+
+           bar_avg_week_id = 'baravgweek';
+           bar_avg_week_labels = @json($bar_week_labels);
+           bar_avg_week_data = @json($bar_avg_week_data);
+           make_bar_avg_week_chart(bar_avg_week_id, bar_avg_week_labels, bar_avg_week_data);
        </script>
    </body>
 

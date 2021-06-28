@@ -84,16 +84,16 @@ window.make_chart = function make_chart(id, labels, data)
        }
    });
 };
-window.make_linechart = function make_linechart(linechartid, linelabels, linedata)
+window.make_line_chart = function make_line_chart(line_chart_id, line_labels, line_data)
 {
-   var ctx = document.getElementById(linechartid).getContext('2d');
+   var ctx = document.getElementById(line_chart_id).getContext('2d');
    var myChart = new Chart(ctx, {
        type: 'line',
        data: {
-           labels: linelabels,
+           labels: line_labels,
            datasets: [{
-               label: '曜日別来客数',
-               data: linedata,
+               label: '月別来客数',
+               data: line_data,
                borderWidth: 1
            }]
        },
@@ -101,16 +101,33 @@ window.make_linechart = function make_linechart(linechartid, linelabels, linedat
        }
    });
 };
-window.make_barweekchart = function make_barweekchart(barweekid, barweeklabels, barweekdata) 
+window.make_bar_week_chart = function make_bar_week_chart(bar_week_id, bar_week_labels, bar_week_data) 
 {
-   var ctx = document.getElementById(barweekid).getContext('2d');
+   var ctx = document.getElementById(bar_week_id).getContext('2d');
    var myChart = new Chart(ctx, {
        type: 'bar',
        data: {
-           labels: barweeklabels,
+           labels: bar_week_labels,
            datasets: [{
-               label: '月別来客数推移',
-               data: barweekdata,
+               label: '曜日別来客数',
+               data: bar_week_data,
+               borderWidth: 1
+           }]
+       },
+       options: {
+       }
+   });
+};
+window.make_bar_avg_week_chart = function make_bar_avg_week_chart(bar_avg_week_id, bar_avg_week_labels, bar_avg_week_data) 
+{
+   var ctx = document.getElementById(bar_avg_week_id).getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'bar',
+       data: {
+           labels: bar_avg_week_labels,
+           datasets: [{
+               label: '全体の曜日別来客数平均',
+               data: bar_avg_week_data,
                borderWidth: 1
            }]
        },
