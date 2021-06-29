@@ -15,6 +15,8 @@
            <canvas id="linechart"></canvas>
            <canvas id="barweek"></canvas>
            <canvas id="baravgweek"></canvas>
+           <canvas id="piesexratio"></canvas>
+           <canvas id="piebyage"></canvas>
            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
        </div>
 
@@ -44,6 +46,16 @@
            bar_avg_week_labels = @json($bar_week_labels);
            bar_avg_week_data = @json($bar_avg_week_data);
            make_bar_avg_week_chart(bar_avg_week_id, bar_avg_week_labels, bar_avg_week_data);
+
+           pie_sex_ratio_id = 'piesexratio';
+           pie_sex_ratio_labels = @json($pie_sex_ratio_labels);
+           pie_sex_ratio_data = @json($pie_sex_ratio_data);
+           make_pie_sex_ratio_chart(pie_sex_ratio_id, pie_sex_ratio_labels, pie_sex_ratio_data);
+
+           pie_by_age_id = 'piebyage';
+           pie_by_age_labels = @json($pie_by_age_labels);
+           pie_by_age_data = @json($pie_by_age_data);
+           make_pie_by_age_chart(pie_by_age_id, pie_by_age_labels, pie_by_age_data);
        </script>
    </body>
 

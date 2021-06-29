@@ -169,6 +169,72 @@ window.make_chart1 = function make_chart1(id2, labels2, data2)
        }
    });
 };
+window.make_pie_sex_ratio_chart = function make_pie_sex_ratio_chart(pie_sex_ratio_id, pie_sex_ratio_labels, pie_sex_ratio_data)
+{
+   var ctx = document.getElementById(pie_sex_ratio_id).getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'pie',
+       data: {
+           labels: pie_sex_ratio_labels,
+           datasets: [{
+               label: '男女比率',
+               data: pie_sex_ratio_data,
+               backgroundColor: [
+                   'rgba(255, 99, 132, 0.2)',
+                   'rgba(54, 162, 235, 0.2)',
+                   'rgba(255, 206, 86, 0.2)',
+                   'rgba(75, 192, 192, 0.2)',
+                   'rgba(153, 102, 255, 0.2)',
+                   'rgba(255, 159, 64, 0.2)'
+               ],
+               borderColor: [
+                   'rgba(255, 99, 132, 1)',
+                   'rgba(54, 162, 235, 1)',
+                   'rgba(255, 206, 86, 1)',
+                   'rgba(75, 192, 192, 1)',
+                   'rgba(153, 102, 255, 1)',
+                   'rgba(255, 159, 64, 1)'
+               ],
+               borderWidth: 1
+           }]
+       },
+       options: {
+       }
+   });
+};
+window.make_pie_by_age_chart = function make_pie_by_age_chart(pie_by_age_id, pie_by_age_labels, pie_by_age_data)
+{
+   var ctx = document.getElementById(pie_by_age_id).getContext('2d');
+   var myChart = new Chart(ctx, {
+       type: 'pie',
+       data: {
+           labels: pie_by_age_labels,
+           datasets: [{
+               label: '年齢別比率',
+               data: pie_by_age_data,
+               backgroundColor: [
+                   'rgba(255, 99, 132, 0.2)',
+                   'rgba(54, 162, 235, 0.2)',
+                   'rgba(255, 206, 86, 0.2)',
+                   'rgba(75, 192, 192, 0.2)',
+                   'rgba(153, 102, 255, 0.2)',
+                   'rgba(255, 159, 64, 0.2)'
+               ],
+               borderColor: [
+                   'rgba(255, 99, 132, 1)',
+                   'rgba(54, 162, 235, 1)',
+                   'rgba(255, 206, 86, 1)',
+                   'rgba(75, 192, 192, 1)',
+                   'rgba(153, 102, 255, 1)',
+                   'rgba(255, 159, 64, 1)'
+               ],
+               borderWidth: 1
+           }]
+       },
+       options: {
+       }
+   });
+};
 // var ctx = document.getElementById('myChart').getContext('2d');
 // var myChart = new Chart(ctx, {
 //     type: 'bar',
