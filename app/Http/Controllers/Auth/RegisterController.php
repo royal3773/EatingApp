@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -65,6 +66,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {//createメソッドを使用して、fillableで指定した値に一括代入する
+        // dd($data);
+        if(isset($data['image'])){
+            // $contact_file = $request->file('file')->storeAs('public', $filenamefull);
+            // $contact->file = basename($contact_file);
+            $filenamefull = $data['image'];
+            $contents = Storage::get('public/'.$filenamefull); //ファイルを読み取る
+            Storage::disk('s3')->put($filenamefull, $contents, 'public'); // Ｓ３にアップ
+            dd('if文');
+        }
+        dd('ストップ');
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

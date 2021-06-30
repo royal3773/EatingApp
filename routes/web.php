@@ -43,6 +43,7 @@ Route::get('/user/reservationcheck','User\ReservationController@indexcheck')->mi
 Route::delete('/user/reservationcheck', 'User\ReservationController@destroy');
 //設定画面
 Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
+Route::get('/user/setting/show', 'User\SettingController@show')->middleware('auth');
 
 
 //お店側のログイン機能を実装
