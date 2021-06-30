@@ -22,6 +22,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin_screen.css') }}" rel="stylesheet">
+
     @yield('style')
 </head>
 <body>
@@ -29,7 +31,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    EatingApp
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -44,16 +46,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @endguest
                         @auth('admin')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -77,11 +69,67 @@
                 </div>
             </div>
         </nav>
+        @auth('admin')
+        <div class="row container-fluid mt-3"> 
+            <div class="col-2 bg-white border border-secondary">
+            <div class="sidebar-sticky">
+            <h5 class="pl-4 pt-4">{{ Auth::guard('admin')->user()->name }}様</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/admin/top">
+                    <i class="fas fa-home fa-2x"></i>
+                      <!-- Dashboard <span class="sr-only">(current)</span> -->
+                      トップページ <span class="sr-only">(現在位置)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/chart">
+                    <i class="fas fa-chart-bar fa-2x"></i>
+                      <!-- Orders -->
+                    お店来店客情報
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/reservation">
+                    <i class="fas fa-clipboard-list fa-2x"></i>
+                      <!-- Products -->
+                      予約状況
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/admin/adminchatselect">
+                    <i class="fas fa-comments fa-2x"></i>
+                      <!-- Products -->
+                      チャット
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <i class="fas fa-cog fa-2x"></i>
+                      <!-- Customers -->
+                      お客様情報
+                    </a>
+                </ul>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-        @yield('script')
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                  <!-- <span>Saved reports</span> -->
+                  <span>EatingApp</span>
+                  <a class="d-flex align-items-center text-muted" href="#">
+                  </a>
+                </h6>
+            </div>
+            </div>
+            <div class="col-10">
+                @yield('content')
+            </div>
+            @endauth
+            @guest
+            <div>
+                @yield('content')
+            </div>
+            @endguest
+        </div>
+            @yield('script')
     </div>
 </body>
 </html>

@@ -59,8 +59,10 @@ Route::get('/admin/adminchatselect', 'Chat\HomeChatController@admin_chat_select_
 Route::get('/admin/reservation', 'Admin\ReservationCalendarController@index')->middleware('auth:admin');
 Route::get('/admin/reservation/events', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
 Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
+//グラフ画面
+Route::get('/admin/chart', 'Admin\ChartController@index')->middleware('auth:admin');
 
-
-Route::get('test', 'Admin\ReservationCalendarController@events')->middleware('auth:admin');
+// Route::get('test', 'Admin\ChartController@index')->middleware('auth:admin');
+Route::get('test', 'TestController@index')->middleware('auth:admin');
 // Route::get('/userlogin', 'UsertopController@indexlogin');
 // Route::get('chat', 'HomeController@chatindex');

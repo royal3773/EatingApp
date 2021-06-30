@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.admin_app')
 
 @section('content')
 <div class="container">
@@ -12,12 +12,7 @@
                 </div>
             </div>
 
-            <div>
-                <a class="btn btn-primary" href = "adminchatselect">testチャット画面一覧</a>
-                </div>
-            <div>
-                <a class="btn btn-primary" href="/admin/reservation">カレンダー予約一覧</a>
-            </div>
+
         </div>
     </div>
 </div>
