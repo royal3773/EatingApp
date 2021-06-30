@@ -1,36 +1,33 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.admin_app')
 
-   <head>
-       <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-       <script src="{{ asset('js/show_chart.js') }}"></script>
-       <title>Laravel</title>
-   </head>
+@section('style')
+    <link href="{{ asset('css/chart.css') }}" rel="stylesheet" >
+@endsection
 
-   <body>
-       <div class="content">
-           <canvas id="allChart"></canvas>
-           <canvas id="chart1"></canvas>
-           <canvas id="linechart"></canvas>
-           <canvas id="barweek"></canvas>
-           <canvas id="baravgweek"></canvas>
-           <canvas id="piesexratio"></canvas>
-           <canvas id="piebyage"></canvas>
-           <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-       </div>
 
+@section('content')
+           <div class="row">
+                <div class="col-7">
+                    <canvas id="linechart" height="300"></canvas>
+                </div>
+                <div class="col-5">
+                    <div class="mt-4"><canvas id="barweek"></canvas></div>
+                    <div class="mt-4"><canvas id="baravgweek"></canvas></div>
+                </div>
+            </div>
+            <div class="row">
+                       <div class="col">
+                           <canvas id="piesexratio"></canvas>
+                        </div>
+                        <div class="col">
+                            <canvas id="piebyage"></canvas>
+                        </div>
+            </div>
+@endsection
+
+@section('script')
        <script src="{{ mix('js/show_chart.js') }}"></script>
        <script>
-           id = 'allChart';
-           labels = @json($keys);
-           data = @json($counts);
-           make_chart(id,labels,data);
-
-           id2 = 'chart1';
-           labels2 = @json($keys1);
-           data2 = @json($counts);
-           make_chart1(id2,labels2,data2);
 
            line_chart_id = 'linechart';
            line_labels = @json($line_labels);
@@ -57,6 +54,4 @@
            pie_by_age_data = @json($pie_by_age_data);
            make_pie_by_age_chart(pie_by_age_id, pie_by_age_labels, pie_by_age_data);
        </script>
-   </body>
-
-</html>
+@endsection
