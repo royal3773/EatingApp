@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">新規登録</div>
                 <div class="card-body">
-                    <form method="POST" action="/register/admin" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="/register/admin" aria-label="{{ __('Register') }}" enctype='multipart/form-data'>
                         @csrf
                         <!-- 名前蘭 -->
                         <div class="form-group row">

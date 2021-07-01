@@ -104,7 +104,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/admin/setting">
                     <i class="fas fa-cog fa-2x"></i>
                       <!-- Customers -->
                       お客様情報

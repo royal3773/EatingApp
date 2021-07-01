@@ -24,7 +24,7 @@ class ChartController extends Controller
         $diff_month = $date_2021_01->diff($date_this_month)->format('%m')+1;
         $this_year = "2021";
         for($i=0; $i<$diff_month; $i++){
-            $line_labels[] = $this_year."-0".$i+1;
+            $line_labels[] = $this_year."-0".($i+1);
             $search_month = array_search($line_labels[$i], array_column($line_query, 'month'));
             if(false === $search_month){
                 $line_data[] = 0;

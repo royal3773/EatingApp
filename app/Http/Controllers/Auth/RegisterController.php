@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -65,6 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {//createメソッドを使用して、fillableで指定した値に一括代入する
+        if(isset($data['image'])){
+            $file = $data['image'];
+            $path = Storage::disk('s3')->put('/user', $file, 'public'); // Ｓ３にアップ
+            $data['image'] = Storage::disk('s3')->url($path);
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -90,6 +96,12 @@ class RegisterController extends Controller
 
     protected function createAdmin(Request $request)
     {
+        if(isset($request['image']))
+        {
+            $file = $request->file('image');
+            $path = Storage::disk('s3')->put('/admin', $file, 'public'); // Ｓ３にアップ
+            $request['image_url'] = Storage::disk('s3')->url($path);
+        }
         $this->validatorAdmin($request->all())->validate();
         $admin = Admin::create([
             'name' => $request['name'],
@@ -97,7 +109,7 @@ class RegisterController extends Controller
             'mail' => $request['mail'],
             'tel' => $request['tel'],
             'address' => $request['address'],
-            'image' => $request['image'],
+            'image' => $request['image_url'],
         ]);
         return redirect()->intended('login/admin');
     }

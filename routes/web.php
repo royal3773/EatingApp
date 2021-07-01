@@ -43,6 +43,7 @@ Route::get('/user/reservationcheck','User\ReservationController@indexcheck')->mi
 Route::delete('/user/reservationcheck', 'User\ReservationController@destroy');
 //設定画面
 Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
+Route::get('/user/setting/show', 'User\SettingController@show')->middleware('auth');
 
 
 //お店側のログイン機能を実装
@@ -61,6 +62,8 @@ Route::get('/admin/reservation/events', 'Admin\ReservationCalendarController@eve
 Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarController@eventsmonth')->middleware('auth:admin');
 //グラフ画面
 Route::get('/admin/chart', 'Admin\ChartController@index')->middleware('auth:admin');
+//ユーザー設定画面
+Route::get('/admin/setting', 'Admin\SettingController@index')->middleware('auth:admin');
 
 // Route::get('test', 'Admin\ChartController@index')->middleware('auth:admin');
 Route::get('test', 'TestController@index')->middleware('auth:admin');
