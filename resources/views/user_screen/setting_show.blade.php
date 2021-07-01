@@ -15,6 +15,8 @@
 <div class="container">
     <!-- 画像 -->
     <div class="d-flex justify-content-center pb-3"><img src="http://placehold.jp/150x150.png"></div>
+    <div class="d-flex justify-content-center pb-3"><img src="{{ $user->image }}"></div>
+    
 
     <!-- 名前 -->
     <div class="d-flex flex-column">

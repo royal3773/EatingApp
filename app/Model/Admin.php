@@ -24,7 +24,7 @@ class Admin extends Authenticatable
         'mail' => ['required', 'email', 'max:50', 'unique:admins'],
         'tel' => ['required', 'numeric', 'digits_between:8,20'],
         'address' => ['required', 'string', 'max:100'],
-        'image' => ['image', 'max:100'],
+        // 'image' => ['image', 'max:100'],
     ];
 
     public static $message = [
@@ -44,8 +44,8 @@ class Admin extends Authenticatable
         'address.required' => '住所は必須項目です',
         'address.string' => '住所は文字で入力して下さい',
         'address.max' => '住所は100文字以下で入力して下さい',
-        'image.image' => 'こちらは画像や写真の拡張子で入力して下さい',
-        'image.max' => 'ファイル名は100文字以内で入力して下さい',
+        // 'image.image' => 'こちらは画像や写真の拡張子で入力して下さい',
+        // 'image.max' => 'ファイル名は100文字以内で入力して下さい',
     ];
 
 }

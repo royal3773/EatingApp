@@ -13,7 +13,7 @@
                 <div class="card-header">新規登録</div>
                 <!-- 管理者側のログインであれば管理者側へユーザー側であればユーザー側へ変換される -->
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}" enctype='multipart/form-data'>
                         @csrf
                         <!-- 名前蘭 -->
                         <div class="form-group row">
