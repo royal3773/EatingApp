@@ -3,6 +3,7 @@
 
 
 @section('navtitle')
+<a class="navbar-brand" href="javascript:history.back()"><i class="fas fa-chevron-left"></i>マイページ</a>
     <li class="navbar-brand">設定情報</li>
 @endsection
 
@@ -14,9 +15,15 @@
 @section('content')
 <div class="container">
     <!-- 画像 -->
-    <div class="d-flex justify-content-center pb-3"><img src="http://placehold.jp/150x150.png"></div>
-    <div class="d-flex justify-content-center pb-3"><img src="{{ $user->image }}"></div>
-    
+    @isset($user->image)
+    <div class="d-flex justify-content-center pb-3">
+        <img class="img-fluid" width=300 src="{{ $user->image }}">
+    </div>
+    @else
+    <div class="d-flex justify-content-center pb-3">
+        <img src="http://placehold.jp/150x150.png">
+    </div>
+    @endisset    
 
     <!-- 名前 -->
     <div class="d-flex flex-column">

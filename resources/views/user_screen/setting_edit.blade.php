@@ -19,16 +19,17 @@
         </div>
     </div>
  
+    {{--  チャット可能ユーザ一覧  --}}
         <div class="card">
-            <div class="card-header">{{ $user->name }}の情報</div>
+            <div class="card-header">変更する項目</div>
                 <div class="card-body border border-bottom">
-                  <a href="/user/setting/show" class="stretched-link　invisible"><p class="h3 text-center">アカウント情報詳細</p></a>
+                  <a href="/user/setting/edit/name" class="stretched-link　invisible"><p class="h3 text-center">ユーザー名変更</p></a>
                 </div>
                 <div class="card-body border border-bottom">
-                  <a href="/user/setting/edit" class="stretched-link　invisible"><p class="h3 text-center">アカウント情報変更</p></a>
+                  <a href="/user/setting/edit/mail" class="stretched-link　invisible"><p class="h3 text-center">メールアドレス変更</p></a>
                 </div>
                 <div class="card-body border border-bottom">
-                    <a href="/user/setting/edit_password" class="stretched-link　invisible"><p class="h3 text-center">アカウントパスワード変更</p></a>
+                    <a href="/user/setting/edit/password" class="stretched-link　invisible"><p class="h3 text-center">パスワード変更</p></a>
                 </div>
             </div>
         </div>
