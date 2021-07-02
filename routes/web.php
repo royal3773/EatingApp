@@ -44,6 +44,10 @@ Route::delete('/user/reservationcheck', 'User\ReservationController@destroy');
 //設定画面
 Route::get('/user/setting', 'User\SettingController@index')->middleware('auth');
 Route::get('/user/setting/show', 'User\SettingController@show')->middleware('auth');
+Route::get('/user/setting/edit', 'User\SettingController@edit')->middleware('auth');
+//名前の変更
+Route::get('/user/setting/edit/name/', 'User\SettingController@edit_name')->middleware('auth');
+Route::post('/user/setting/edit/name/{user_id}', 'User\SettingController@update_name');
 
 
 //お店側のログイン機能を実装

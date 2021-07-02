@@ -3,7 +3,8 @@
 
 
 @section('navtitle')
-    <li class="navbar-brand">設定情報</li>
+<a class="navbar-brand" href="javascript:history.back()"><i class="fas fa-chevron-left"></i>マイページ</a>
+    <li class="navbar-brand">変更設定画面</li>
 @endsection
 
 @section('style')
