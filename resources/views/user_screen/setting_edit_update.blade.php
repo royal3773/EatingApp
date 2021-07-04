@@ -135,7 +135,7 @@
     <!--ーーーーーーーー画像変更 -------------------------->
     @isset($user_image)
     <div class="d-flex justify-content-center pb-3">
-        <img class="img-fluid" width=300 src="{{ $user->image }}">
+        <img class="img-fluid" width=300 src="{{ $user_image }}">
     </div>
     <form method="POST" action="/user/setting/edit/image/{{ $user_id }}" enctype='multipart/form-data'>
     @csrf

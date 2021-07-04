@@ -39,11 +39,45 @@
     </form>
 
   </div>
+  
 
 
 </div>
 @endfor
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+        <input type="hidden" name="start_numbar" id="start" value="{{ $start }}">
+@isset($genre)
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{1}}">1</a></li>
+        <li class="page-item" id="start_num10"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{10}}">2</a></li>
+        <li class="page-item" id="start_num20"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{20}}">3</a></li>
+        <li class="page-item" id="start_num30"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{30}}">4</a></li>
+        <li class="page-item" id="start_num40"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{40}}">5</a></li>
+        <li class="page-item" id="start_num50"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{50}}">6</a></li>
+        <li class="page-item" id="start_num60"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{60}}">7</a></li>
+        <li class="page-item" id="start_num70"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{70}}">8</a></li>
+        <li class="page-item" id="start_num80"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{80}}">9</a></li>
+        <li class="page-item" id="start_num90"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{90}}">10</a></li>
+    </ul>
+</nav>
+@endisset
+@isset($special)
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{1}}">1</a></li>
+        <li class="page-item" id="start_num10"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{10}}">2</a></li>
+        <li class="page-item" id="start_num20"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{20}}">3</a></li>
+        <li class="page-item" id="start_num30"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{30}}">4</a></li>
+        <li class="page-item" id="start_num40"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{40}}">5</a></li>
+        <li class="page-item" id="start_num50"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{50}}">6</a></li>
+        <li class="page-item" id="start_num60"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{60}}">7</a></li>
+        <li class="page-item" id="start_num70"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{70}}">8</a></li>
+        <li class="page-item" id="start_num80"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{80}}">9</a></li>
+        <li class="page-item" id="start_num90"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{90}}">10</a></li>
+    </ul>
+</nav>
+@endisset
 </div>
 @endsection
 
@@ -106,6 +140,14 @@
                 });
               });
         });
+
+//ペジネーション機能現在何ページかを表示する処理
+const start = document.getElementById("start")
+const start_value = start.value
+console.log(start_value);
+const page = document.getElementById("start_num"+start_value);
+page.classList.add('active');
+console.log(page);
 
 
 </script>

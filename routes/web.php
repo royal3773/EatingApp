@@ -29,6 +29,8 @@ Route::post('/user/top/search_keyword', 'User\SearchRestaurantController@keyword
 Route::get('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
 Route::post('/user/top/genre', 'User\SearchRestaurantController@genre');
 Route::post('/user/top/special_feature', 'User\SearchRestaurantController@special_feature');
+Route::get('/user/top/genre/{genre}/{address}/{start}', 'User\SearchRestaurantController@genre_pagination');
+Route::get('/user/top/special/{special}/{address}/{start}', 'User\SearchRestaurantController@special_pagination');
 //お気に入り機能
 Route::get('/user/favorite', 'User\FavoriteController@index')->middleware('auth');
 Route::post('/user/{favorite}/favorite', 'User\FavoriteController@store');
