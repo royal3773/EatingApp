@@ -43,8 +43,6 @@ class SettingController extends Controller
         $request['image_url'] = Storage::disk('s3')->url($path);
         $form = $request->all();
         unset($form['_token']);
-        // dump($admin->image);
-        // dd($request['image_url']);
         $admin->image = $request['image_url'];
         $admin->save();
         return redirect('/admin/setting');
