@@ -1,7 +1,7 @@
 @extends('layouts.user_app')
 
 @section('navtitle')
-    <a class="navbar-brand" href="javascript:history.back()"><i class="fas fa-chevron-left"></i> {{ $recieve_name }}</a>
+    <a class="navbar-brand" href="/user/userchatselect"><i class="fas fa-chevron-left"></i> {{ $recieve_name }}</a>
 @endsection
 
 @section('style')

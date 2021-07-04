@@ -5,7 +5,7 @@
 @endsection
 
 @section('navtitle')
-    <a class="navbar-brand" href="javascript:history.back()"><i class="fas fa-arrow-left"></i> 検索一覧</a>
+    <a class="navbar-brand" href="/user/top"><i class="fas fa-arrow-left"></i> 検索一覧</a>
 @endsection
 
 @section('content')
