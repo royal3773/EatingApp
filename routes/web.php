@@ -48,6 +48,21 @@ Route::get('/user/setting/edit', 'User\SettingController@edit')->middleware('aut
 //名前の変更
 Route::get('/user/setting/edit/name/', 'User\SettingController@edit_name')->middleware('auth');
 Route::post('/user/setting/edit/name/{user_id}', 'User\SettingController@update_name');
+//メールアドレス変更
+Route::get('/user/setting/edit/email/', 'User\SettingController@edit_email')->middleware('auth');
+Route::post('/user/setting/edit/email/{user_id}', 'User\SettingController@update_email');
+//パスワード変更
+Route::get('/user/setting/edit/password/', 'User\SettingController@edit_password')->middleware('auth');
+Route::post('/user/setting/edit/password/{user_id}', 'User\SettingController@update_password');
+//電話番号変更
+Route::get('/user/setting/edit/tel/', 'User\SettingController@edit_tel')->middleware('auth');
+Route::post('/user/setting/edit/tel/{user_id}', 'User\SettingController@update_tel');
+//住所変更
+Route::get('/user/setting/edit/address/', 'User\SettingController@edit_address')->middleware('auth');
+Route::post('/user/setting/edit/address/{user_id}', 'User\SettingController@update_address');
+//画像変更
+Route::get('/user/setting/edit/image/', 'User\SettingController@edit_image')->middleware('auth');
+Route::post('/user/setting/edit/image/{user_id}', 'User\SettingController@update_image');
 
 
 //お店側のログイン機能を実装
@@ -68,6 +83,10 @@ Route::get('/admin/reservation/events/month', 'Admin\ReservationCalendarControll
 Route::get('/admin/chart', 'Admin\ChartController@index')->middleware('auth:admin');
 //ユーザー設定画面
 Route::get('/admin/setting', 'Admin\SettingController@index')->middleware('auth:admin');
+Route::get('/admin/setting/edit', 'Admin\SettingController@edit')->middleware('auth:admin');
+Route::post('/admin/setting/edit/{admin_id}', 'Admin\SettingController@update_text');
+Route::post('/admin/setting/image/{admin_id}', 'Admin\SettingController@update_image');
+Route::post('/admin/setting/password/{admin_id}', 'Admin\SettingController@update_password');
 
 // Route::get('test', 'Admin\ChartController@index')->middleware('auth:admin');
 Route::get('test', 'TestController@index')->middleware('auth:admin');

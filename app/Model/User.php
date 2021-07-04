@@ -36,7 +36,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     public static $rules = [
         'name' => ['required', 'string', 'max:50'],
         'email' => ['required', 'email', 'max:50', 'unique:users'],
@@ -71,5 +70,46 @@ class User extends Authenticatable
         'address.max' => '住所は100文字以下で入力して下さい',
         // 'image.image' => 'こちらは画像や写真の拡張子で入力して下さい',
         'image.max' => 'ファイル名は100文字以内で入力して下さい',
+    ];
+    public static $rules_name = [
+        'name' => ['required', 'string', 'max:50'],
+    ];
+    public static $message_name = [
+        'name.required' => '名前は必須項目です',
+        'name.string' => '名前は文字で入力して下さい',
+        'name.max' => '名前は50文字以内で入力して下さい',
+    ];
+    public static $rules_email = [
+        'email' => ['required', 'email', 'max:50', 'unique:users'],
+    ];
+    public static $message_email = [
+        'email.required' => 'メールアドレスは必須項目です',
+        'email.email' => 'こちらのアドレスは不正です',
+        'email.max' => 'メールアドレスは50文字以内で入力して下さい。',
+        'email.unique' => 'こちらのメールアドレスはすでに登録されています。',
+    ];
+    public static $rules_password = [
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+    ];
+    public static $message_password = [
+        'password.required' => 'パスワードは必須項目です',
+        'password.min' => 'パスワードは８文字以上必要です',
+        'password.confirmed' => '確認用パスワードが一致しません',
+    ];
+    public static $rules_tel = [
+        'tel' => ['required', 'numeric', 'digits_between:8,20'],
+    ];
+    public static $message_tel = [
+        'tel.required' => '電話番号は必須項目です。',
+        'tel.numeric' => '電話番号は半角数字で入力して下さい',
+        'tel.digits_between' => '電話番号は8桁以上で入力して下さい',
+    ];
+    public static $rules_address = [
+        'address' => ['required', 'string', 'max:100'],
+    ];
+    public static $message_address = [
+        'address.required' => '住所は必須項目です',
+        'address.string' => '住所は文字で入力して下さい',
+        'address.max' => '住所は100文字以下で入力して下さい',
     ];
 }
