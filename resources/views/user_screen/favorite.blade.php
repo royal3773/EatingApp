@@ -10,41 +10,40 @@
 
 @section('content')
 @for ($i = 0; $i < $count; $i++)
+<div class="container">
+    <div class="card">
+        <h5 class="card-header text-center"><a href="{{ $restaurants[$i]['shop'][0]['urls']['pc'] }}">{{ $restaurants[$i]['shop'][0]['name'] }}</a></h5>
+        <div class="card-body row">
+            <h5 class="card-title pl-3"><img src="{{ $restaurants[$i]['shop'][0]['photo']['mobile']['l'] }}" alt="restaurants_img"></h5>
+            <div class="col-md-7">
+                <p class="card-text font-weight-bold mb-0">{{ $restaurants[$i]['shop'][0]['genre']['catch'] }}</p>
+                <p class="card-text mb-0">場所　{{ $restaurants[$i]['shop'][0]['address'] }}</p>
+                <p class="card-text mb-0">営業時間　{{ $restaurants[$i]['shop'][0]['open'] }}</p>
+                <p class="card-text mb-0">定休日　{{ $restaurants[$i]['shop'][0]['close'] }}</p>
+                <p class="card-text mb-0">席数　{{ $restaurants[$i]['shop'][0]['capacity'] }}</p>
+                <p class="card-text mb-0">駐車場　{{ $restaurants[$i]['shop'][0]['parking'] }}</p>
+            </div>
+            <form name="form">
+                <input type="hidden" name="restaurant_id{{ $i }}" value="{{ $restaurants[$i]['shop'][0]['id'] }}">
+                @if(0 === $favorites->where('restaurant_id', $restaurants[$i]['shop'][0]['id'])->count())
+                    <button type="button"　 class="btn  btn-favorite-register btn-check1 btn-change1{{ $i }} btn-outline-danger col m-1 rounded-pill" value="{{ $i }}"><i class="far fa-heart"></i>お気に入り追加</button>
+                @else
+                    <button type="button"　 class="btn  btn-favorite-delete btn-check2 btn-change2{{ $i }} btn-danger col m-1 rounded-pill" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
+                @endif
+                    <button type="button"　 class="btn  btn-favorite-register btn-check2 btn-change2{{ $i }} btn-outline-danger col m-1 rounded-pill d-none" value="{{ $i }}"　onclick="style.display='none'"><i class="far fa-heart"></i>お気に入り追加</button>
+                    <button type="button"　 class="btn  btn-favorite-delete btn-check1 btn-change1{{ $i }} btn-danger col m-1 rounded-pill d-none" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
+            </form>
 
-</table>
-<div class="card">
-<h5 class="card-header text-center"><a href="{{ $restaurants[$i]['shop'][0]['urls']['pc'] }}">{{ $restaurants[$i]['shop'][0]['name'] }}</a></h5>
-<div class="card-body row">
-<h5 class="card-title pl-3"><img src="{{ $restaurants[$i]['shop'][0]['photo']['mobile']['l'] }}" alt="restaurants_img"></h5>
-<div class="col-md-7">
-    <p class="card-text font-weight-bold mb-0">{{ $restaurants[$i]['shop'][0]['genre']['catch'] }}</p>
-    <p class="card-text mb-0">場所　{{ $restaurants[$i]['shop'][0]['address'] }}</p>
-    <p class="card-text mb-0">営業時間　{{ $restaurants[$i]['shop'][0]['open'] }}</p>
-    <p class="card-text mb-0">定休日　{{ $restaurants[$i]['shop'][0]['close'] }}</p>
-    <p class="card-text mb-0">席数　{{ $restaurants[$i]['shop'][0]['capacity'] }}</p>
-    <p class="card-text mb-0">駐車場　{{ $restaurants[$i]['shop'][0]['parking'] }}</p>
+        </div>
+    </div>
 </div>
 
-<form name="form">
-    <input type="hidden" name="restaurant_id{{ $i }}" value="{{ $restaurants[$i]['shop'][0]['id'] }}">
-@if(0 === $favorites->where('restaurant_id', $restaurants[$i]['shop'][0]['id'])->count())
-    <button type="button"　 class="btn  btn-favorite-register btn-check1 btn-change1{{ $i }} btn-outline-danger col m-1 rounded-pill" value="{{ $i }}"><i class="far fa-heart"></i>お気に入り追加</button>
-@else
-    <button type="button"　 class="btn  btn-favorite-delete btn-check2 btn-change2{{ $i }} btn-danger col m-1 rounded-pill" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
-@endif
-    <button type="button"　 class="btn  btn-favorite-register btn-check2 btn-change2{{ $i }} btn-outline-danger col m-1 rounded-pill d-none" value="{{ $i }}"　onclick="style.display='none'"><i class="far fa-heart"></i>お気に入り追加</button>
-
-    <button type="button"　 class="btn  btn-favorite-delete btn-check1 btn-change1{{ $i }} btn-danger col m-1 rounded-pill d-none" value="{{ $i }}"><i class="fas fa-heart"></i>お気に入り解除</button>
-</form>
-
-</div>
-
-
-</div>
 @endfor
-    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-</div>
+    <div class="d-flex justify-content-center">
+      {{ $favorites->links()}}
+    </div>
 
+<input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
 @endsection
 

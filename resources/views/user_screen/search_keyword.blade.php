@@ -39,11 +39,59 @@
     </form>
 
   </div>
+  
 
 
 </div>
 @endfor
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+        <input type="hidden" name="start_numbar" id="start" value="{{ $start }}">
+<!-- キーワード別ペジネーション -->
+@isset($keyword)
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/keyword/{{$keyword}}/{{1}}">1</a></li>
+            @for($i = 1;$i < 10; $i++) 
+            <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/keyword/{{$keyword}}/{{$i*10}}">{{$i + 1}}</a></li>
+            @endfor
+        </ul>
+    </nav>
+@endisset
+<!-- 現在地別ペジネーション -->
+@isset($lng)
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/range/{{$lat}}/{{$lng}}/{{1}}">1</a></li>
+            @for($i = 1;$i < 10; $i++) 
+            <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/range/{{$lat}}/{{$lng}}/{{$i*10}}">{{$i + 1}}</a></li>
+            @endfor
+        </ul>
+    </nav>
+@endisset
+<!-- ジャンル別ペジネーション -->
+@isset($genre)
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{1}}">1</a></li>
+            @for($i = 1;$i < 10; $i++) 
+            <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{$i*10}}">{{$i + 1}}</a></li>
+            @endfor
+        </ul>
+    </nav>
+@endisset
+<!-- シーン別ペジネーション -->
+@isset($special)
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{1}}">1</a></li>
+        @for($i = 1;$i < 10; $i++) 
+            <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{$i*10}}">{{$i + 1}}</a></li>
+        @endfor
+        </ul>
+    </nav>
+@endisset
+
+
 </div>
 @endsection
 
@@ -106,6 +154,14 @@
                 });
               });
         });
+
+//ペジネーション機能現在何ページかを表示する処理
+const start = document.getElementById("start")
+const start_value = start.value
+console.log(start_value);
+const page = document.getElementById("start_num"+start_value);
+page.classList.add('active');
+console.log(page);
 
 
 </script>
