@@ -27,7 +27,7 @@ class ReservationController extends Controller
     {
         //日付が近い順に取得
         $user_id = Auth::id();
-        $reservations = Reservation::where('user_id', $user_id)->oldest('date')->get();
+        $reservations = Reservation::where('user_id', $user_id)->oldest('date')->paginate(5);
         return view('user_screen.reservation_check', ['reservations' => $reservations]);
     }
     //予約登録処理

@@ -45,7 +45,7 @@
                   <div class="row">
                       <p class="card-text font-weight-bold col-4 text-right mb-2">その他</p>
                   @isset($reservation->comment)
-                      <p class="pl-3 col-6 mb-2">アイウエオkファおノアj＠亞＠gj岩dnfがwrんmがwん顔：ガンナgんらんgrヴァンg:オアrんr義苗rg「いおあ</p>
+                      <p class="pl-3 col-6 mb-2">{{$reservation->comment}}</p>
                   @else
                       <p class="pl-3 col-6 mb-2">ありません。</p>
                   @endisset
@@ -67,6 +67,9 @@
 
 
   @endforeach
+<div class="d-flex justify-content-center">
+  {{ $reservations->links()}}
+</div>
 </div>
 
 @endsection

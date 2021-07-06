@@ -10,7 +10,7 @@
 
 @section('content')
 @for ($i = 0; $i < $count; $i++)
-
+<div class="container">
 </table>
 <div class="card">
 <h5 class="card-header text-center"><a href="{{ $restaurants[$i]['shop'][0]['urls']['pc'] }}">{{ $restaurants[$i]['shop'][0]['name'] }}</a></h5>
@@ -42,6 +42,7 @@
 
 </div>
 @endfor
+</div>
     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 </div>
 

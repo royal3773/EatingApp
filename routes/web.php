@@ -25,12 +25,16 @@ Route::post('/chat/send' , 'MessageController@store')->name('chatSend');
 //ユーザー側のログイン後の画面
 Route::get('/user/top', 'HomeController@index');
 //お店情報を表示SearchRestaurant
+Route::get('/user/top/search_keyword', 'User\SearchRestaurantController@keyword')->middleware('auth');
 Route::post('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
-Route::get('/user/top/search_keyword', 'User\SearchRestaurantController@keyword');
 Route::post('/user/top/genre', 'User\SearchRestaurantController@genre');
 Route::post('/user/top/special_feature', 'User\SearchRestaurantController@special_feature');
-Route::get('/user/top/genre/{genre}/{address}/{start}', 'User\SearchRestaurantController@genre_pagination');
-Route::get('/user/top/special/{special}/{address}/{start}', 'User\SearchRestaurantController@special_pagination');
+// ペジネーション
+Route::get('/user/top/keyword/{keyword}/{start}', 'User\SearchRestaurantController@keyword_pagination')->middleware('auth');
+Route::get('/user/top/range/{lat}/{lng}/{start}', 'User\SearchRestaurantController@lat_lng_pagination')->middleware('auth');
+Route::get('/user/top/genre/{genre}/{address}/{start}', 'User\SearchRestaurantController@genre_pagination')->middleware('auth');
+Route::get('/user/top/special/{special}/{address}/{start}', 'User\SearchRestaurantController@special_pagination')->middleware('auth');
+
 //お気に入り機能
 Route::get('/user/favorite', 'User\FavoriteController@index')->middleware('auth');
 Route::post('/user/{favorite}/favorite', 'User\FavoriteController@store');
