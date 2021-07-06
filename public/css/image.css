@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin-right: 3%;
+}
