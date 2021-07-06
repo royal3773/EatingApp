@@ -7,7 +7,7 @@
 @endsection
 
 @section('style')
-    <link href="{{ asset('css/btn.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/image.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -66,7 +66,7 @@
     </div>
 
 
-  @endforeach
+@endforeach
 <div class="d-flex justify-content-center">
   {{ $reservations->links()}}
 </div>
