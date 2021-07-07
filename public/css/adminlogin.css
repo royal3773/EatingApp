@@ -1,6 +1,0 @@
-@charset "UTF-8";
-/* -----------------------------image----------------------------------- */
-.jumbotron {
-  background-image: url(../image/food.jpg);
-  background-size: cover;
-}
