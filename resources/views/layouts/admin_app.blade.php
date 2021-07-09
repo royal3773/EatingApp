@@ -22,7 +22,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin_screen.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/a_Invalid.css') }}" rel="stylesheet">
+
+    <style>
+
+    </style>
 
     @yield('style')
 </head>
@@ -70,9 +74,9 @@
             </div>
         </nav>
         @auth('admin')
-        <div class="row container-fluid mt-3"> 
-            <div class="col-2 bg-white border border-secondary">
-            <div class="sidebar-sticky">
+        <div class="row container-fluid mt-3 p-0" > 
+            <div class="col-2">
+            <div class="sidebar-sticky bg-white border border-secondary">
             <h5 class="pl-4 pt-4">{{ Auth::guard('admin')->user()->name }}様</h5>
                 <ul class="nav flex-column">
                   <li class="nav-item">

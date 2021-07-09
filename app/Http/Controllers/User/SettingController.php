@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Model\User;
 use App\Model\Admin;
+use App\Model\Reservation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,5 +127,11 @@ class SettingController extends Controller
         $user->image = $request['image_url'];
         $user->save();
         return redirect('/admin/setting');
+    }
+    public function reservation_history()
+    {
+        $user_id = Auth::id();
+        $reservations_history = Reservation::where('user_id', $user_id)->where('date', '<=', date('Y-m-d'))->oldest('date')->paginate(5);
+        return view('user_screen.setting_reservation_history', ['reservations_history' => $reservations_history]);
     }
 }

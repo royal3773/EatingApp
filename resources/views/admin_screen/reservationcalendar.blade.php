@@ -19,7 +19,13 @@
     </div>
 
     
-    
-    <!-- <script src="{{ asset('js/reservationcalendar.js') }}"></script> -->
+    <script type="text/javascript">
+
+        let texts = document.getElementsByClassName('fc-list-empty-cushion');
+        console.log(texts);
+        console.log(texts[0]);
+        console.log(texts.length);
+
+    </script>
     
     @endsection

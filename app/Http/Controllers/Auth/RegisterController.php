@@ -66,6 +66,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {//createメソッドを使用して、fillableで指定した値に一括代入する
+        $request['image_url'] = NULL;
+        // dd($request['image_url']);
         if(isset($data['image'])){
             $file = $data['image'];
             $path = Storage::disk('s3')->put('/user', $file, 'public'); // Ｓ３にアップ
@@ -79,7 +81,10 @@ class RegisterController extends Controller
             'sex' => $data['sex'],
             'tel' => $data['tel'],
             'address' => $data['address'],
-            'image' => $data['image'],
+            if(isset($data['image_url'])){
+                'image' => $data['image'];
+            }
+            })
         ]);
     }
 
@@ -96,6 +101,7 @@ class RegisterController extends Controller
 
     protected function createAdmin(Request $request)
     {
+
         if(isset($request['image']))
         {
             $file = $request->file('image');
