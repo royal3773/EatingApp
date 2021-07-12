@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     eventClick: function(info){
       var eventObj = info.event;
-      alert('イベントの詳細  ' + eventObj.title);
+      alert('イベントの詳細' + eventObj.title);
     },
     events: '/admin/reservation/events',
   });

@@ -22,7 +22,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin_screen.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/a_Invalid.css') }}" rel="stylesheet">
+
+    <style>
+
+    </style>
 
     @yield('style')
 </head>
@@ -70,44 +74,44 @@
             </div>
         </nav>
         @auth('admin')
-        <div class="row container-fluid mt-3"> 
-            <div class="col-2 bg-white border border-secondary">
-            <div class="sidebar-sticky">
+        <div class="row container-fluid p-0" > 
+            <div class="col-2">
+            <div class="sidebar-sticky bg-white border ">
             <h5 class="pl-4 pt-4">{{ Auth::guard('admin')->user()->name }}様</h5>
                 <ul class="nav flex-column">
                   <li class="nav-item">
                     <a class="nav-link active" href="/admin/top">
-                    <i class="fas fa-home fa-2x"></i>
+                    <i class="fas fa-home fa-2x fa-fw"></i>
                       <!-- Dashboard <span class="sr-only">(current)</span> -->
                       トップページ <span class="sr-only">(現在位置)</span>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/chart">
-                    <i class="fas fa-chart-bar fa-2x"></i>
+                    <i class="fas fa-chart-bar fa-2x fa-fw"></i>
                       <!-- Orders -->
-                    お店来店客情報
+                    来店客情報
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/reservation">
-                    <i class="fas fa-clipboard-list fa-2x"></i>
+                    <i class="fas fa-clipboard-list fa-2x fa-fw"></i>
                       <!-- Products -->
                       予約状況
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/adminchatselect">
-                    <i class="fas fa-comments fa-2x"></i>
+                    <i class="fas fa-comments fa-2x fa-fw"></i>
                       <!-- Products -->
                       チャット
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/setting">
-                    <i class="fas fa-cog fa-2x"></i>
+                    <i class="fas fa-cog fa-2x fa-fw"></i>
                       <!-- Customers -->
-                      お客様情報
+                      設定
                     </a>
                 </ul>
 

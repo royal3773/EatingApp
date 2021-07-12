@@ -1,7 +1,7 @@
 @extends('layouts.admin_app')
 
 @section('style')
-<link href="{{ asset('css/adminregister.css') }}" rel="stylesheet">
+<link href="{{ asset('css/jumbotron.css') }}" rel="stylesheet">
 @endsection
 
 

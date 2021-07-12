@@ -3,6 +3,7 @@
 @section('style')
 <script src="{{ mix('js/usertop.js') }}"></script>
 <link href="{{ asset('css/usertop.css') }}" rel="stylesheet">
+<link href="{{ asset('css/btn.css') }}" rel="stylesheet">
 @endsection
 
 @section('navtitle')

@@ -47,7 +47,7 @@ class SearchRestaurantController extends Controller
 
         $user_id = Auth::id();
         $favorites = Favorite::where('user_id', $user_id)->get(['restaurant_id']);
-        $start=1;
+        $start=0;
         $lat = $request->latitude;
         $lng = $request->longitude;
         $keyword = $request->keyword;
@@ -154,7 +154,7 @@ class SearchRestaurantController extends Controller
         $favorites = Favorite::where('user_id', $user_id)->get();
         $genre = $request->food;
         $address = $request->prefectures;
-        $start = 1;
+        $start = 0;
 
         return view('user_screen.search_keyword', ['restaurants' => $restaurants, 'favorites' => $favorites, 'genre' => $genre, 'address' => $address, 'start' => $start]);
 
@@ -224,7 +224,7 @@ class SearchRestaurantController extends Controller
         $favorites = Favorite::where('user_id', $user_id)->get();
         $special = $request->special_feature;
         $address = $request->prefectures;
-        $start = 1;
+        $start = 0;
 
         return view('user_screen.search_keyword', ['restaurants' => $restaurants, 'favorites' => $favorites, 'special' => $special, 'address' => $address, 'start' => $start]);
     }

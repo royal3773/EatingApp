@@ -15,6 +15,11 @@
 .show > .btn-success.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(110, 3, 27, 0.5);
 }
+.btn-success:focus {
+  color: #fff;
+  background-color: rgba(110, 3, 27, 0.5);
+  border-color: rgba(110, 3, 27, 0.5);
+}
 
 /* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
 .btn-success:hover {

@@ -69,6 +69,8 @@ Route::post('/user/setting/edit/address/{user_id}', 'User\SettingController@upda
 //画像変更
 Route::get('/user/setting/edit/image/', 'User\SettingController@edit_image')->middleware('auth');
 Route::post('/user/setting/edit/image/{user_id}', 'User\SettingController@update_image');
+//行ったことあるお店履歴
+Route::get('/user/setting/reservation', 'User\SettingController@reservation_history')->middleware('auth');
 
 
 //お店側のログイン機能を実装

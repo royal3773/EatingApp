@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Model\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
@@ -27,7 +29,7 @@ class AdminController extends Controller
     {
         $admin = new Admin;
         $admin->name = $request->name;
-        $admin->password = $request->password;
+        $admin->password = Hash::make($request->password);
         $admin->mail = $request->mail;
         $admin->tel = $request->tel;
         $admin->address = $request->address;

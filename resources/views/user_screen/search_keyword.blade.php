@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
-@section('style')
-    <link href="{{ asset('css/search_keyword.css') }}" rel="stylesheet">
-@endsection
-
 @section('navtitle')
     <a class="navbar-brand" href="/user/top"><i class="fas fa-arrow-left"></i> 検索一覧</a>
 @endsection
+
+@section('style')
+    <link href="{{ asset('css/search_keyword.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/a_Invalid.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user_card.css') }}" rel="stylesheet">
+@endsection
+
 
 @section('content')
 <div class="container">
@@ -50,8 +53,7 @@
 @isset($keyword)
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/keyword/{{$keyword}}/{{1}}">1</a></li>
-            @for($i = 1;$i < 10; $i++) 
+            @for($i = 0;$i < 10; $i++) 
             <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/keyword/{{$keyword}}/{{$i*10}}">{{$i + 1}}</a></li>
             @endfor
         </ul>
@@ -61,8 +63,7 @@
 @isset($lng)
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/range/{{$lat}}/{{$lng}}/{{1}}">1</a></li>
-            @for($i = 1;$i < 10; $i++) 
+            @for($i = 0;$i < 10; $i++) 
             <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/range/{{$lat}}/{{$lng}}/{{$i*10}}">{{$i + 1}}</a></li>
             @endfor
         </ul>
@@ -72,8 +73,7 @@
 @isset($genre)
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{1}}">1</a></li>
-            @for($i = 1;$i < 10; $i++) 
+            @for($i = 0;$i < 10; $i++) 
             <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/genre/{{$genre}}/{{$address}}/{{$i*10}}">{{$i + 1}}</a></li>
             @endfor
         </ul>
@@ -83,8 +83,7 @@
 @isset($special)
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item" id="start_num1"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{1}}">1</a></li>
-        @for($i = 1;$i < 10; $i++) 
+        @for($i = 0;$i < 10; $i++) 
             <li class="page-item" id="start_num{{$i*10}}"><a class="page-link" href="/user/top/special/{{$special}}/{{$address}}/{{$i*10}}">{{$i + 1}}</a></li>
         @endfor
         </ul>

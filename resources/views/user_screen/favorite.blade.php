@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
-@section('style')
-    <link href="{{ asset('css/search_keyword.css') }}" rel="stylesheet">
-@endsection
-
 @section('navtitle')
     <li class="navbar-brand">お気に入り</li>
+@endsection
+
+@section('style')
+    <link href="{{ asset('css/search_keyword.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user_card.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/a_Invalid.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
