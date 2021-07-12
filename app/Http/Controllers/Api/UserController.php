@@ -22,9 +22,9 @@ class UserController extends Controller
     }
     public function pget(Request $request)
     {
-        $user_name = '%'.$request->like.'%';
-        $page = ($request->page - 1) * 5;
-        $user = User::where('name', 'like', $user_name)->skip($page)->take(5)->get();
+        $take = $request->take;
+        $page = ($request->page * $take) - $take;
+        $user = User::skip($page)->take($take)->get();
         // $user = User::find($request->id);
         return $user;
     }
