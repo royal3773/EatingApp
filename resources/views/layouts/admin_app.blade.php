@@ -81,37 +81,37 @@
                 <ul class="nav flex-column">
                   <li class="nav-item">
                     <a class="nav-link active" href="/admin/top">
-                    <i class="fas fa-home fa-2x"></i>
+                    <i class="fas fa-home fa-2x fa-fw"></i>
                       <!-- Dashboard <span class="sr-only">(current)</span> -->
                       トップページ <span class="sr-only">(現在位置)</span>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/chart">
-                    <i class="fas fa-chart-bar fa-2x"></i>
+                    <i class="fas fa-chart-bar fa-2x fa-fw"></i>
                       <!-- Orders -->
-                    お店来店客情報
+                    来店客情報
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/reservation">
-                    <i class="fas fa-clipboard-list fa-2x"></i>
+                    <i class="fas fa-clipboard-list fa-2x fa-fw"></i>
                       <!-- Products -->
                       予約状況
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/adminchatselect">
-                    <i class="fas fa-comments fa-2x"></i>
+                    <i class="fas fa-comments fa-2x fa-fw"></i>
                       <!-- Products -->
                       チャット
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/setting">
-                    <i class="fas fa-cog fa-2x"></i>
+                    <i class="fas fa-cog fa-2x fa-fw"></i>
                       <!-- Customers -->
-                      お客様情報
+                      設定
                     </a>
                 </ul>
 

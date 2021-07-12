@@ -41,7 +41,7 @@ class ReservationCalendarController extends Controller
             $event['start'] = $reservation->time;
             $events[] = $event;
         }
-        // dd($events);
+        // dd('アイウエオ');
         echo json_encode($events);
     }
     public function eventsmonth()

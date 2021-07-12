@@ -23,7 +23,8 @@ class UserController extends Controller
     public function pget(Request $request)
     {
         $user_name = '%'.$request->like.'%';
-        $user = User::where('name', 'like', $user_name)->paginate(5);
+        $page = ($request->page - 1) * 5;
+        $user = User::where('name', 'like', $user_name)->skip($page)->take(5)->get();
         // $user = User::find($request->id);
         return $user;
     }
