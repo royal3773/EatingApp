@@ -74,9 +74,9 @@
             </div>
         </nav>
         @auth('admin')
-        <div class="row container-fluid mt-3 p-0" > 
+        <div class="row container-fluid p-0" > 
             <div class="col-2">
-            <div class="sidebar-sticky bg-white border border-secondary">
+            <div class="sidebar-sticky bg-white border ">
             <h5 class="pl-4 pt-4">{{ Auth::guard('admin')->user()->name }}様</h5>
                 <ul class="nav flex-column">
                   <li class="nav-item">

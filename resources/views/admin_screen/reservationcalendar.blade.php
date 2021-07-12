@@ -5,6 +5,15 @@
     <!-- <script src="https://unpkg.com/@popperjs/core@2" defer></script> -->
     <link rel="stylesheet" href="{{ mix('css/fullcalendar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reservationcalendar.css') }}">
+    <style>
+      .fc-list-empty-cushion { 
+        font-size: 0;
+      }
+      .fc-list-empty-cushion:before {
+        font-size: 20px;
+        content: '予約はございません。'
+      }
+    </style>
     @endsection
     
     @section('content')
@@ -14,18 +23,6 @@
           <div id="calendarweek" class="col"></div>
         </div>
           <div id="calendarday" class="calendar"></div>
-
-    
     </div>
-
-    
-    <script type="text/javascript">
-
-        let texts = document.getElementsByClassName('fc-list-empty-cushion');
-        console.log(texts);
-        console.log(texts[0]);
-        console.log(texts.length);
-
-    </script>
     
     @endsection
