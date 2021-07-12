@@ -24,6 +24,11 @@ class UserController extends Controller
     {
         $take = $request->take;
         $page = ($request->page * $take) - $take;
+        if(empty($request->take)){
+            return 1;
+        }elseif(empty($request->page)) {
+            return 1;
+        }
         $user = User::skip($page)->take($take)->get();
         // $user = User::find($request->id);
         return $user;
