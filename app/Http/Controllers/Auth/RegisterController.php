@@ -66,11 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {//createメソッドを使用して、fillableで指定した値に一括代入する
-        $data['image'] = NULL;
+        $data['image_url'] = NULL;
         if(isset($data['image'])){
             $file = $data['image'];
             $path = Storage::disk('s3')->put('/user', $file, 'public'); // Ｓ３にアップ
-            $data['image'] = Storage::disk('s3')->url($path);
+            $data['image_url'] = Storage::disk('s3')->url($path);
         }
         return User::create([
             'name' => $data['name'],
@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'sex' => $data['sex'],
             'tel' => $data['tel'],
             'address' => $data['address'],
-            'image' => $data['image'],
+            'image' => $data['image_url'],
         ]);
     }
 
