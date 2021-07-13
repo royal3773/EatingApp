@@ -44,7 +44,7 @@ class User extends Authenticatable
         'sex' => ['required', 'string', 'max:5'],
         'tel' => ['required', 'numeric', 'digits_between:8,20'],
         'address' => ['required', 'string', 'max:100'],
-        'image' => ['max:100'],
+        // 'image' => ['max:100'],
     ];
     public static $message = [
         'name.required' => '名前は必須項目です',
@@ -69,7 +69,7 @@ class User extends Authenticatable
         'address.string' => '住所は文字で入力して下さい',
         'address.max' => '住所は100文字以下で入力して下さい',
         // 'image.image' => 'こちらは画像や写真の拡張子で入力して下さい',
-        'image.max' => 'ファイル名は100文字以内で入力して下さい',
+        // 'image.max' => 'ファイル名は100文字以内で入力して下さい',
     ];
     public static $rules_name = [
         'name' => ['required', 'string', 'max:50'],

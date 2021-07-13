@@ -117,7 +117,7 @@
     <form method="POST" action="/user/setting/edit/address/{{ $user_id }}" enctype='multipart/form-data'>
     @csrf
         <div class="form-group">
-            <label for="address" class="col-form-label col-form-label-lg">電話番号</label>
+            <label for="address" class="col-form-label col-form-label-lg">住所</label>
             <input type="address" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }} form-control-lg" id="address" placeholder="{{ $user_address }} " required autofocus>
             @error ('address')
                 <span class="invalid-feedback" role="alert">
