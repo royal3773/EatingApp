@@ -6,6 +6,7 @@ use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -22,13 +23,16 @@ class UserController extends Controller
     }
     public function pget(Request $request)
     {
-        $take = $request->take;
-        $page = ($request->page * $take) - $take;
+        $validator = Validator::make($request->all(), ['take' =>'numeric', 'page' => 'numeric']);
         if(empty($request->take)){
             return 1;
         }elseif(empty($request->page)) {
             return 1;
+        }elseif($validator->fails()) {
+            return 1;
         }
+        $take = $request->take;
+        $page = ($request->page * $take) - $take;
         $user = User::skip($page)->take($take)->get();
         // $user = User::find($request->id);
         return $user;
