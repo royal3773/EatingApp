@@ -132,12 +132,35 @@
         </div>
     </form>
     @endisset
-    <!--ーーーーーーーー画像変更 -------------------------->
+    <!--ーーーーーーーー画像変更画像あり -------------------------->
     @isset($user_image)
     <div class="d-flex justify-content-center pb-3">
         <img class="img-fluid" width=300 src="{{ $user_image }}">
     </div>
     <form method="POST" action="/user/setting/edit/image/{{ $user_id }}" enctype='multipart/form-data'>
+    @csrf
+        <div class="form-group">
+            <label for="image" class="col-form-label col-form-label-lg">画像</label>
+            <input type="file" name="image" class="form-control-file{{ $errors->has('image') ? ' is-invalid' : '' }} form-control-lg" id="image"  required autofocus>
+            @error ('image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="fixed-bottom pb-6 px-5">
+            <button type="submit" class="btn btn-lg btn-block btn-success">
+                更新
+            </button>
+        </div>
+    </form>
+    @endisset
+    <!--ーーーーーーーー画像変更画像なし -------------------------->
+    @isset($null_image)
+    <div class="d-flex justify-content-center pb-3">
+        <img src="http://placehold.jp/150x150.png">
+    </div>
+    <form method="POST" action="/user/setting/edit/register/image/{{ $user_id }}" enctype='multipart/form-data'>
     @csrf
         <div class="form-group">
             <label for="image" class="col-form-label col-form-label-lg">画像</label>

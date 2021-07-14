@@ -112,7 +112,14 @@ class SettingController extends Controller
     {
         $user_image = Auth::user()->image;
         $user_id = Auth::id();
-        return view('user_screen.setting_edit_update', ['user_image' => $user_image, 'user_id' => $user_id]);
+        if(isset($user_image))
+        {
+            return view('user_screen.setting_edit_update', ['user_image' => $user_image, 'user_id' => $user_id]);
+        }else
+        {
+            $null_image = 'null';
+            return view('user_screen.setting_edit_update', ['null_image' => $null_image, 'user_id' => $user_id]);
+        }
     }
     public function update_image(Request $request, $user_id)
     {
@@ -126,7 +133,19 @@ class SettingController extends Controller
         unset($form['_token']);
         $user->image = $request['image_url'];
         $user->save();
-        return redirect('/admin/setting');
+        return redirect('/user/setting');
+    }
+    public function register_image(Request $request, $user_id)
+    {
+        $user = User::find($user_id);
+        $file = $request->file('image');
+        $path = Storage::disk('s3')->put('/user', $file, 'public'); // Ｓ３にアップ
+        $request['image_url'] = Storage::disk('s3')->url($path);
+        $form = $request->all();
+        unset($form['_token']);
+        $user->image = $request['image_url'];
+        $user->save();
+        return redirect('/user/setting');
     }
     public function reservation_history()
     {
