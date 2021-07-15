@@ -108,9 +108,9 @@ class RegisterController extends Controller
             $request['image_url'] = Storage::disk('s3')->url($path);
         }
         $this->validatorAdmin($request->all())->validate();
-        $request['shopid'] = 'user'.(mt_rand(100000000,999999999)*10+mt_rand(0,9));
+        $request['shopid'] = 'admin'.(mt_rand(100000000,999999999)*10+mt_rand(0,9));
         $admin = Admin::create([
-            'shop' => $request['shopid'],
+            'shopid' => $request['shopid'],
             'name' => $request['name'],
             'password' => Hash::make($request['password']),
             'mail' => $request['mail'],
