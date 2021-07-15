@@ -15,7 +15,7 @@
             <div class="card-header">お客様の名前</div>
             @foreach($users as $key => $user)
                 <div class="card-body border border-dark">
-                    <a href="/chat/{{$user->id}}" class="stretched-link　invisible"><p class="h3">{{$user->name}}</p></a>
+                    <a href="/chat/{{$user->userid}}" class="stretched-link　invisible"><p class="h3">{{$user->name}}</p></a>
                 </div>
             @endforeach
             </div>

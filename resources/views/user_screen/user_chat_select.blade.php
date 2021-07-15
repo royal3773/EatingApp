@@ -23,7 +23,7 @@
             <div class="card-header">お店の名前</div>
             @foreach($admins as $key => $admin)
                 <div class="card-body border border-dark">
-                    <a href="/chat/{{$admin->id}}" class="stretched-link　invisible"><p class="h3">{{$admin->name}}</p></a>
+                    <a href="/chat/{{$admin->shopid}}" class="stretched-link　invisible"><p class="h3">{{$admin->name}}</p></a>
                 </div>
             @endforeach
             </div>

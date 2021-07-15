@@ -23,33 +23,37 @@ class MessageController extends Controller
         if(Auth::guard()->check())
         {
             $loginId = Auth::id();
+            $send = User::find($loginId)->userid;
             $send_name = User::find($loginId)->name;
-            $recieve_name = Admin::find($recieve)->name;
+            $recieve_name = Admin::where('shopid', $recieve)->get('name');
+            
         }
         elseif(Auth::guard('admin')->check())
         {
             $loginId = Auth::guard('admin')->id();
+            $send = Admin::find($loginId)->shopid;
             $send_name = Admin::find($loginId)->name;
-            $recieve_name = User::find($recieve)->name;
+            $recieve_name = User::where('userid', $recieve)->get('name');
         }
         else
         {
             return redirect('/');
         }
-
+        
         $param = [
-          'send' => $loginId,
-          'recieve' => $recieve,
+            'send' => $send,
+            'recieve' => $recieve,
         ];
+        // dd($recieve_name[0]['name']);
         // 送受信のメッセージを取得する
-        $send_message = Message::where('send' , $loginId)->where('recieve' , $recieve);
-        $send_message->orWhere(function($query) use($loginId , $recieve){
+        $send_message = Message::where('send' , $send)->where('recieve' , $recieve);
+        $send_message->orWhere(function($query) use($send , $recieve){
             $query->where('send' , $recieve);
-            $query->where('recieve' , $loginId);
+            $query->where('recieve' , $send);
         });
         $messages = $send_message->get();
 
-        return view('chat' , ['param' => $param, 'messages' => $messages, 'send_name' => $send_name, 'recieve_name' => $recieve_name]);
+        return view('chat' , ['param' => $param, 'messages' => $messages, 'send_name' => $send_name, 'recieve_name' => $recieve_name[0]['name']]);
     }
 
     /**
@@ -76,21 +80,19 @@ class MessageController extends Controller
             $messages->recieve = $request->input('recieve');
             $messages->message = $request->input('message');
         $messages->save();
-        // Message::insert($insertParam);
         //日付と時間を保存
         $request['created_at'] = date('m/d H:i');
         //送信者の名前を保存
         if(Auth::guard()->check())
         {
-            $send_user = User::find($request->input('send'));
-            $request['send_user'] = $send_user->name;
+            $send_user = User::where('userid', $request->input('send'))->get('name');
+            $request['send_user'] = $send_user[0]['name'];
         }
         elseif(Auth::guard('admin')->check())
         {
-            $send_admin = Admin::find($request->input('send'));
-            $request['send_admin'] = $send_admin->name;
+            $send_admin = Admin::where('shopid', $request->input('send'))->get('name');
+            $request['send_admin'] = $send_admin[0]['name'];
         }
-        dump($request->all());
         // イベント発火chatmessagerecieved.phpに書いてある処理を呼び出す
         event(new ChatMessageRecieved($request->all()));
 

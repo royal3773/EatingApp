@@ -23,7 +23,7 @@
     <div id="room" class="mb-5">
         @foreach($messages as $key => $message)
             {{--------------   送信したメッセージ  -------------------}}
-            @if($message->send == \Illuminate\Support\Facades\Auth::id())
+            @if($message->send == $param['send'])
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-2 pl-1">
                         <span class="small">{{ $send_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
@@ -34,7 +34,7 @@
                         <p class="h5">{{ $message->message }}</p>
                     </div>
                 </div>
-            @elseif($message->send == \Illuminate\Support\Facades\Auth::guard('admin')->id())
+            @elseif($message->send == $param['send'])
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-2 pl-1">
                         <span class="small">{{ $send_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
@@ -48,7 +48,7 @@
             @endif
  
             {{-------------------   受信したメッセージ  ------------------------}}
-            @if($message->recieve == \Illuminate\Support\Facades\Auth::id())
+            @if($message->recieve == $param['send'])
                 <div class="d-flex align-items-center justify-content-start">
                     <div class="pr-2 pl-1">
                         <span class="small">{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
@@ -59,7 +59,7 @@
                         <p class="h5">{{ $message->message }}</p>
                     </div>
                 </div>
-            @elseif($message->recieve == \Illuminate\Support\Facades\Auth::guard('admin')->id())
+            @elseif($message->recieve == $param['send'])
                 <div class="d-flex align-items-center justify-content-start">
                     <div class="pr-2 pl-1">
                         <span class="small">{{ $recieve_name }} {{ $message['created_at']->format('m/d H:i') }}</span>
@@ -89,12 +89,12 @@
 @auth
     <input type="hidden" name="send" value="{{$param['send']}}">
     <input type="hidden" name="recieve" value="{{$param['recieve']}}">
-    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::id()}}">
+    <input type="hidden" name="login" value="{{$param['send']}}">
 @endauth
 @auth('admin')
     <input type="hidden" name="send" value="{{$param['send']}}">
     <input type="hidden" name="recieve" value="{{$param['recieve']}}">
-    <input type="hidden" name="login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->id()}}">
+    <input type="hidden" name="login" value="{{$param['send']}}">
 @endauth
 <input type="hidden" name="user_login" value="{{\Illuminate\Support\Facades\Auth::guard()->check()}}">
 <input type="hidden" name="admin_login" value="{{\Illuminate\Support\Facades\Auth::guard('admin')->check()}}">
