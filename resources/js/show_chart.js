@@ -133,7 +133,17 @@ window.make_pie_sex_ratio_chart = function make_pie_sex_ratio_chart(pie_sex_rati
            }]
        },
        options: {
-       }
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: '男女比率'
+          }
+        }
+      },
    });
 };
 window.make_pie_by_age_chart = function make_pie_by_age_chart(pie_by_age_id, pie_by_age_labels, pie_by_age_data)
@@ -172,6 +182,16 @@ window.make_pie_by_age_chart = function make_pie_by_age_chart(pie_by_age_id, pie
            }]
        },
        options: {
-       }
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: '年齢別比率'
+          }
+        }
+      },
    });
 };

@@ -11,7 +11,7 @@ class Admin extends Authenticatable
     protected $guard = 'admin';//デフォルトのユーザーガードを使用しない場合は指定する必要がある。
 
     protected $fillable = [
-        'name', 'password', 'mail', 'tel', 'address', 'image'
+        'shopid', 'name', 'password', 'mail', 'tel', 'address', 'image'
     ];
 
     protected $hidden = [
