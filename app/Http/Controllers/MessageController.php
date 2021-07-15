@@ -25,15 +25,14 @@ class MessageController extends Controller
             $loginId = Auth::id();
             $send = User::find($loginId)->userid;
             $send_name = User::find($loginId)->name;
-            $recieve_name = Admin::where('shopid', $recieve)->get('name');
-            
+            $recieve_name_id = Admin::where('shopid', $recieve)->get(['name', 'id']);
         }
         elseif(Auth::guard('admin')->check())
         {
             $loginId = Auth::guard('admin')->id();
             $send = Admin::find($loginId)->shopid;
             $send_name = Admin::find($loginId)->name;
-            $recieve_name = User::where('userid', $recieve)->get('name');
+            $recieve_name_id = User::where('userid', $recieve)->get('name');
         }
         else
         {
@@ -52,8 +51,7 @@ class MessageController extends Controller
             $query->where('recieve' , $send);
         });
         $messages = $send_message->get();
-
-        return view('chat' , ['param' => $param, 'messages' => $messages, 'send_name' => $send_name, 'recieve_name' => $recieve_name[0]['name']]);
+        return view('chat' , ['param' => $param, 'messages' => $messages, 'send_name' => $send_name, 'recieve_name' => $recieve_name_id[0]['name'], 'admin_id' => $recieve_name_id[0]['id']]);
     }
 
     /**
