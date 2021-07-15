@@ -22,7 +22,7 @@
     </div>
 @enderror
 
-<div class="row">
+<div class="row pt-4">
     <div class="col-4">
       <div class="d-flex justify-content-center pb-3">
         <div class="d-flex flex-column">
