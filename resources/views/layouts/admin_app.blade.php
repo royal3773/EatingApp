@@ -83,14 +83,14 @@
                     <a class="nav-link active" href="/admin/top">
                     <i class="fas fa-home fa-2x fa-fw"></i>
                       <!-- Dashboard <span class="sr-only">(current)</span> -->
-                      トップページ <span class="sr-only">(現在位置)</span>
+                      ホーム <span class="sr-only">(現在位置)</span>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/admin/chart">
                     <i class="fas fa-chart-bar fa-2x fa-fw"></i>
                       <!-- Orders -->
-                    来店客情報
+                    来店情報
                     </a>
                   </li>
                   <li class="nav-item">

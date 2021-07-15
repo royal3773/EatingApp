@@ -70,8 +70,6 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->input());
-        // dd($request);
         $messages = new Message;
         // リクエストパラメータを保存
             $messages->send = $request->input('send');

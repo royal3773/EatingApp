@@ -45,10 +45,6 @@ class ChatMessageRecieved implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        // dump('イベント処理');
-        // dump($this->request['message']);
-        // dump($this->request['send_user']);
-        // dump($this->request);
         if(isset($this->request['send_user']))
         {
             // dump($this->request);
