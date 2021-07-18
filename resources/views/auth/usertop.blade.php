@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/usertop.css') }}" rel="stylesheet">
+  <script src="{{ mix('js/app.js') }}" defer></script>
   
   <title>Document</title>
 </head>
@@ -33,24 +34,69 @@
 <!----------------- ナビゲーションバー ---------------->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-  <a class="navbar-brand">目次</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-around" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#EatingApp">Eating Appとは /<span class="sr-only">(current)</span>
+            <a class="nav-item nav-link active" href="#user">ユーザー側の使い方 /</a>
+            <a class="nav-item nav-link active" href="#">お店側の使い方 /</a>
+            <a class="nav-item nav-link active" href="#">使用技術紹介 /</a>
+            <a class="nav-item nav-link active" href="#">実際に使用してみる</a>
+        </div>
     </div>
-  </div>
 </nav>
 
 
-
-
+  <!----------------- EatingAppとは ---------------->
+<div class="pb-4">  
+    <div id="EatingApp">
+        <h1 class="title">Eating Appとは</h1>
+    </div>
     
+    <div class="container">
+        <div class="text-center">
+            <h6 class="font-weight-bold text-green">ホットペッパーは飲食点検索機能!</h6>
+            <h6 class="font-weight-bold text-green">飲食店とお客様との距離をより近くするためのツールです。</h6>
+            <h4 class="font-weight-bold">EatingAppはホットペッパーAPIを使用した飲食店検索予約システムです。</h4>
+            <h4 class="font-weight-bold">お店側に気になることや質問をすることができます。</h4>
+        </div>
+        <div class="text-center">
+          <a class="btn btn-success btn-lg" href="#">まずは使用する</a>
+        </div>
+    </div>
+</div>
+  <!----------------- ユーザーの使い方 ---------------->
+
+<div class="bg-dot pb-5">
+    <div id="user">
+        <h1 class="title">ユーザーの使い方</h1>
+    </div>
+
+    <div class="container pt-4">
+        <div class="d-flex justify-content-center">
+            <img class="img-step-title"src="{{ asset('image/step_title.png') }}" alt="title">
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-md text-center">
+                <img class="img-step p-2" src="{{ asset('image/step1.png') }}" alt="step1">
+                <img class="img-step-main p-3" src="{{ asset('image/step1_main.png') }}" alt="step1_main">
+            </div>
+            <div class="col-md text-center">
+                <img class="img-step p-2" src="{{ asset('image/step2.png') }}" alt="step1">
+                <img class="img-step-main p-3" src="{{ asset('image/step2_main.png') }}" alt="step2_main">
+            </div>
+            <div class="col-md text-center">
+                <img class="img-step p-2" src="{{ asset('image/step3.png') }}" alt="step1">
+                <img class="img-step-main p-3" src="{{ asset('image/step3_main.png') }}" alt="step3_main">
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <div>
         <a class="btn btn-primary btn-lg btn-block" href ="login">ログイン</a>
     </div>

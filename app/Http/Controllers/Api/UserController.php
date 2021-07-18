@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\UserRequest;
 use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,16 +22,16 @@ class UserController extends Controller
         $user = User::find($id);
         return $user;
     }
-    public function pget(Request $request)
+    public function pget(UserRequest $request)
     {
-        $validator = Validator::make($request->all(), ['take' =>'numeric', 'page' => 'numeric']);
-        if(empty($request->take)){
-            return 1;
-        }elseif(empty($request->page)) {
-            return 1;
-        }elseif($validator->fails()) {
-            return 1;
-        }
+        // $validator = Validator::make($request->all(), ['take' =>'numeric', 'page' => 'numeric']);
+        // if(empty($request->take)){
+        //     return 1;
+        // }elseif(empty($request->page)) {
+        //     return 1;
+        // }elseif($validator->fails()) {
+        //     return 1;
+        // }
         $take = $request->take;
         $page = ($request->page * $take) - $take;
         $user = User::skip($page)->take($take)->get();

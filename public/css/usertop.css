@@ -1,5 +1,41 @@
 @charset "UTF-8";
 
+/* -----------------------------btn----------------------------------- */
+/* 通常のボタン色 */
+.btn-success,
+.btn-success.disabled, .btn-success:disabled {
+  color: #fff;
+  background-color: #13BD00;
+  border-color: #13BD00;
+}
+
+/* focusされた時の枠線の色 */
+.btn-success:focus, .btn-success.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #13bd00a4;
+}
+.btn-success:focus {
+  color: #fff;
+  background-color: #13BD00;
+  border-color: #13BD00;
+}
+
+/* hover時（マウスカーソルを重ねた時）の色（通常より濃いor暗めの色を指定）*/
+.btn-success:hover {
+  color: #fff;
+  background-color: #13bd00a4;
+  border-color: #13bd00a4;
+}
+
+/* active時の色（hover時と同等かさらに濃いor暗めの色を指定） */
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #13bd00a4;
+  border-color: #13bd00a4;
+}
+
 /* -----------------------------image----------------------------------- */
 
 .jumbotron {
@@ -30,4 +66,93 @@
 
 .font-size-small {
   font-size: small;
+}
+
+
+/* -----------------------------navbar----------------------------------- */
+
+
+
+
+/* -----------------------------title----------------------------------- */
+.title{
+  background:#ec6a38;
+  -webkit-animation:colour 10s linear infinite;
+  -moz-animation:colour 10s linear infinite;
+  
+}
+@-webkit-keyframes colour{
+  0%{
+    background:#ec6a38
+  }
+  
+  40%{
+    background:#ec4038
+  }
+  
+  80%{
+    background:#ec9138
+  }
+  
+  100%{
+    background:#ec6a38
+  }
+  
+}
+
+@-moz-keyframes colour{
+  0%{
+    background:#ec6a38
+  }
+  
+  40%{
+    background:#ec4038
+  }
+  
+  80%{
+    background:#ec9138
+  }
+  
+  100%{
+    background:#ec6a38
+  }
+  
+}
+h1{
+  font-family:arial;
+  color:#fff;
+  font-size:50px;
+  text-align:center;
+}
+
+/* -----------------------------container----------------------------------- */
+
+.text-green {
+  
+  color: #13BD00;
+}
+
+/* ----------user--------- */
+
+.box{
+  width:100%;
+  height:200px;
+}
+/* ドット基本 */
+.bg-dot{
+  background-color: #fff;
+  background-image:
+    radial-gradient(#e4ebea 30%, transparent 30%);
+  background-size: 20px 20px;
+}
+.img-step-title {
+  width: 50%;
+}
+.img-step {
+  width: 150px;
+  height: 40px;
+  object-fit: none;
+}
+.img-step-main {
+  width: 100%;
 }
