@@ -104,11 +104,11 @@
 </body>
     <div class="pt-5">
         <nav class="nav nav-pills nav-justified fixed-bottom bg-menu">
-            <a class="white nav-item nav-link font-size" href="/user/top"><i class="fas fa-home"></i><p>ホーム</p></a>
-            <a class="white nav-item nav-link font-size" href="/user/favorite"><i class="fas fa-heart"></i><p>お気に入り</p></a>
+            <a class="white nav-item nav-link font-size" href="/user/top"><i class="fas fa-home"></i><p>ホ-ム</p></a>
+            <a class="white nav-item nav-link font-size" href="/user/favorite"><i class="fas fa-heart"></i><p>お気入り</p></a>
             <a class="white nav-item nav-link font-size" href="/user/userchatselect"><i class="fas fa-comments"></i><p>チャット</p></a>
             <a class="white nav-item nav-link font-size" href="/user/reservationcheck"><i class="fas fa-clipboard-check"></i><p>予約確認</p></a>
-            <a class="white nav-item nav-link font-size" href="/user/setting/"><i class="fas fa-user-alt"></i><p>マイページ</p></a>
+            <a class="white nav-item nav-link font-size" href="/user/setting/"><i class="fas fa-user-alt"></i><p>マイペ-ジ</p></a>
         </nav>
     </div>
 </div>

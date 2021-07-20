@@ -53,6 +53,7 @@ Chart.register(
 
 window.make_line_chart = function make_line_chart(line_chart_id, line_labels, line_data)
 {
+
    var ctx = document.getElementById(line_chart_id).getContext('2d');
    var myChart = new Chart(ctx, {
        type: 'line',
@@ -67,6 +68,11 @@ window.make_line_chart = function make_line_chart(line_chart_id, line_labels, li
            }]
        },
        options: {
+        scales: {
+          y: {
+              min: 0
+          }
+      }
        }
    });
 };

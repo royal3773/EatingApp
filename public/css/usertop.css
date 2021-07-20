@@ -1,5 +1,21 @@
 @charset "UTF-8";
 
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  background-color: #ed7b9b;
+  opacity: .8;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+}
+.scroll-top:hover {
+  cursor: pointer;
+}
 /* -----------------------------btn----------------------------------- */
 /* 通常のボタン色 */
 .btn-success,
@@ -79,7 +95,6 @@
   background:#ec6a38;
   -webkit-animation:colour 10s linear infinite;
   -moz-animation:colour 10s linear infinite;
-  
 }
 @-webkit-keyframes colour{
   0%{
@@ -121,7 +136,7 @@
 h1{
   font-family:arial;
   color:#fff;
-  font-size:50px;
+  font-size:36px;
   text-align:center;
 }
 
@@ -154,5 +169,36 @@ h1{
   object-fit: none;
 }
 .img-step-main {
+  width: 95%;
+  object-fit: cover;
+}
+.img-user-title {
+  width: 20%;
+}
+.img-admin-title {
+  width: 65%;
+}
+.img-sucreen {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ----------technology--------- */
+
+.bg-yellowgreen{
+  background-color: #d0f2cc;
+}
+
+.bg-green {
+  background-color: #27C323;
+}
+.img-technology {
   width: 100%;
 }
+
+/* ----------use--------- */
+
+.bg-darkgreen{
+  background-color: #13BD00;
+}
+
