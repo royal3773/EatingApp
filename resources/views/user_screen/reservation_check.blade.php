@@ -29,7 +29,9 @@
         <h5 class="card-header text-center">{{ $reservation->admin->name }}</h5>
         <div class="card-body row justify-content-center">
             @isset($reservation->admin->image)
+            <div>
                 <h5 class="card-title pl-3"><img src="{{ $reservation->admin->image }}"></h5>
+            </div>
             @else
                 <h5 class="card-title pl-3"><img src="https://placehold.jp/150x150.png"></h5>
 

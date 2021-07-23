@@ -289,6 +289,20 @@
                 <img class="img-technology" src="{{ asset('image/HOTPEPPER_API.jpeg') }}" alt="HOTPEPPER_API">
             </div>
         </div>
+        <div class="row">
+            <div class="col-md bg-white m-4">
+                <div class="pt-3">
+                    <h1 class="rounded-pill bg-green mx-5">Guzzle</h1>
+                </div>
+                <img class="img-technology" src="{{ asset('image/Guzzle.png') }}" alt="Guzzle">
+            </div>
+            <div class="col-md bg-white m-4">
+                <div class="pt-3">
+                    <h1 class="rounded-pill bg-green mx-5">MAMP</h1>
+                </div>
+                <img class="img-technology" src="{{ asset('image/MAMP.png') }}" alt="MAMP">
+            </div>
+        </div>
     </div>
 </div>
 
