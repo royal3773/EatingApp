@@ -75,14 +75,14 @@ Route::post('/user/setting/edit/register/image/{user_id}', 'User\SettingControll
 Route::get('/user/setting/reservation', 'User\SettingController@reservation_history')->middleware('auth');
 
 
-//お店側のログイン機能を実装
+//お店側のログイン
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
-//お店側の登録機能を実装
+//お店側の登録機能
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 //homeへアクセスするルート情報。ログインしていないとlogin画面へリダイレクトされる。
-Route::view('/admin/top', 'admin_screen.admintop')->middleware('auth:admin');
+Route::get('/admin/top', 'Admin\TopController@index')->middleware('auth:admin');
 //チャット選択画面
 Route::get('/admin/adminchatselect', 'Chat\HomeChatController@admin_chat_select_index')->middleware('auth:admin');
 //お店側予約確認
